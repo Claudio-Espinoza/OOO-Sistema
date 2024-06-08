@@ -18,7 +18,7 @@
     - Discord
     - whatsapp
 
-## Requerimientos importantess:
+## Requerimientos:
 
 1. Proporcionar un metodo de informacion (Idea en proceso)
 2. Roadmap funcional y animado
