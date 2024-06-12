@@ -1,0 +1,16 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --background-color: #f2f2f2;
+  --borde-color: #222222;
+  --borde-opacity: 40%;
+
+  --font-color: #222222;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  --primery-color: #f29e38;
+  --secundary-color: #7e56a6;
+}
