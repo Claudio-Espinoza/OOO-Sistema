@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ButonNav from '../atoms/ButonNav.vue'
-import { ref } from 'vue';
+import { ref, Ref } from 'vue';
 
 const emit = defineEmits(['clicked']);
-const activeButton = ref('Inicio');
+const activeButton: Ref<string> = ref('Inicio');
 
 const handleButtonClick = (title: string) => {
     activeButton.value = title;
@@ -36,7 +36,7 @@ const handleButtonClick = (title: string) => {
 
         <section class="section-comunity">
             <h2 class="learning-title">COMUNIDAD</h2>
-            <ButonNav title="Ayudantes" img="casa.png" imgAlternative="casa-blanca.png"
+            <ButonNav title="Ayudantes" img="personas.png" imgAlternative="personas-blanco.png"
                 :isActive="activeButton === 'Ayudantes'" @clicked="handleButtonClick" />
             <ButonNav title="Discord" img="libro.png" imgAlternative="libro-blanco.png"
                 :isActive="activeButton === 'Discord'" @clicked="handleButtonClick" />

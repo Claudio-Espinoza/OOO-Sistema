@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import NavBar from '../components/organisms/NavBar.vue';
 import HeaderMain from '../components/organisms/HeaderMain.vue'
-import { ref } from 'vue';
+import { ref, Ref } from 'vue';
 
-let titleGeneral = ref('Inicio')
+let titleGeneral: Ref<string> = ref('Inicio')
 
 const handleButtonClick = (title: string) => {
     titleGeneral.value = title;

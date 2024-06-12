@@ -1,13 +1,17 @@
 <script setup lang="ts">
 
-const props = defineProps({
-    title: String,
-    img: String,
-    imgAlternative: String,
-    isActive: Boolean
-})
+interface Props {
+    title: string,
+    img: string,
+    imgAlternative: string,
+    isActive: boolean
+}
 
-const emit = defineEmits(['clicked']);
+const props = defineProps<Props>();
+
+const emit = defineEmits({
+    clicked: (payload: string) => typeof payload === 'string'
+});
 
 function handlerButon(): void {
     emit('clicked', props.title);

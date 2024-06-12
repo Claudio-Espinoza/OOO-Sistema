@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import UserCard from '../molecules/UserCard.vue'
 
+interface Props {
+    title: string;
+}
 
-const props = defineProps({
-    title: String
-})
+const props = defineProps<Props>();
 
 
 
