@@ -2,10 +2,12 @@
 import ButonNav from '../atoms/ButonNav.vue'
 import { ref } from 'vue';
 
+const emit = defineEmits(['clicked']);
 const activeButton = ref('Inicio');
 
 const handleButtonClick = (title: string) => {
     activeButton.value = title;
+    emit('clicked', activeButton.value);
 };
 
 </script>
@@ -54,13 +56,13 @@ const handleButtonClick = (title: string) => {
     width: 16%;
     height: 100vh;
 
-    position: absolute;
     display: flex;
     flex-direction: column;
-    left: 0;
+
 }
 
 .section-logo {
+    margin-top: 1vh;
     display: flex;
     flex-direction: row;
     align-items: center;
