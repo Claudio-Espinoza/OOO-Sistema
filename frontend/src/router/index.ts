@@ -3,12 +3,37 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/landing',
+    redirect: '/inicio',
   },
   {
-    path: '/landing',
-    name: 'landing',
+    path: '/inicio',
+    name: 'inicio',
     component: () => import('../pages/LandingPage.vue'),
+  },
+  {
+    path: '/cursos',
+    name: 'cursos',
+    component: () => import('../pages/CoursePage.vue'),
+  },
+  {
+    path: '/desafios',
+    name: 'desafios',
+    component: () => import('../pages/ChallengerPage.vue'),
+  },
+  {
+    path: '/ayudantes',
+    name: 'ayudantes',
+    component: () => import('../pages/HelperPage.vue'),
+  },
+  {
+    path: '/discord',
+    name: 'discord',
+    component: () => import('../pages/DiscordPage.vue'),
+  },
+  {
+    path: '/whatsapp',
+    name: 'whatsapp',
+    component: () => import('../pages/WhatsPage.vue'),
   },
 ];
 

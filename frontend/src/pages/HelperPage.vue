@@ -5,7 +5,7 @@ import MainLayout from '../layouts/MainLayout.vue';
 <template>
     <MainLayout>
         <article class="container-main">
-            <h1>Inicio</h1>
+            <h1>Ayudantes</h1>
         </article>
 
     </MainLayout>
