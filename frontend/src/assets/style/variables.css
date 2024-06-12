@@ -4,12 +4,12 @@
   -webkit-font-smoothing: antialiased;
 
   --background-color: #f2f2f2;
-  --borde-color: #222222;
+  --borde: 0.2vh solid rgb(34, 34, 34, 0.4);
   --borde-opacity: 40%;
 
   --font-color: #222222;
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-  --primery-color: #f29e38;
-  --secundary-color: #7e56a6;
+  --color-naranja: #f29e38;
+  --color-morado: #7e56a6;
 }
