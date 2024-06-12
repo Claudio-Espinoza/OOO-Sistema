@@ -42,6 +42,8 @@ function handlerButon(): void {
     font-family: var(--font-family);
     padding: 0.3vh 0.3vh 0.3vh 0.7vw;
 
+    cursor: pointer;
+
 }
 
 .buton-container--false:hover {
@@ -66,6 +68,9 @@ function handlerButon(): void {
     background-color: var(--color-morado);
     border-radius: 2vw 0vw 0vw 2vw;
     padding: 0.3vh 0.3vh 0.3vh 0.7vw;
+
+    cursor: pointer;
+
 }
 
 .buton-container--true:hover {
