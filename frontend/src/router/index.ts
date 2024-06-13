@@ -8,6 +8,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/inicio',
     name: 'inicio',
+
     component: () => import('../pages/LandingPage.vue'),
   },
   {

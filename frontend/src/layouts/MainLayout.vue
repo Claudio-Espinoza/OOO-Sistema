@@ -1,17 +1,27 @@
 <script setup lang="ts">
 import NavBar from '../components/organisms/NavBar.vue';
 import HeaderMain from '../components/organisms/HeaderMain.vue'
-import { ref, Ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { ref, Ref, watch } from 'vue';
 
-let titleGeneral: Ref<string> = ref('Inicio')
+const route = useRoute();
+let titleGeneral: Ref<string> = ref(formatTitle(route.path));
+
+watch(() => route.path, (newPath) => {
+    titleGeneral.value = formatTitle(newPath);
+});
 
 const handleButtonClick = (title: string) => {
     titleGeneral.value = title;
 };
+
+function formatTitle(path: string): string {
+    return path.replace('/', '').charAt(0).toUpperCase() + path.slice(2);
+}
 </script>
 
 <template>
-    <NavBar @clicked="handleButtonClick" />
+    <NavBar @clicked="handleButtonClick" :seccion="titleGeneral" />
     <main class="container">
         <HeaderMain :title="titleGeneral" />
         <slot>

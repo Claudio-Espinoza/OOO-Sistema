@@ -1,14 +1,26 @@
 <script setup lang="ts">
-import ButonNav from '../atoms/ButonNav.vue'
+import ButonNav from '../atoms/ButonNav.vue';
 import { ref, Ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+
+const props = defineProps({
+    seccion: String
+})
 const emit = defineEmits(['clicked']);
-const activeButton: Ref<string> = ref('Inicio');
+
+const activeButton: Ref<string> = ref(props.seccion || 'Inicio');
 
 const handleButtonClick = (title: string) => {
     activeButton.value = title;
     emit('clicked', activeButton.value);
 };
+
+function changePage(ruta: string): void {
+    router.push(ruta)
+}
+
 
 </script>
 
@@ -27,21 +39,22 @@ const handleButtonClick = (title: string) => {
         <section class="section-learning">
             <h2 class="learning-title">APRENDIZAJE</h2>
             <ButonNav title="Inicio" img="casa.png" imgAlternative="casa-blanca.png"
-                :isActive="activeButton === 'Inicio'" @clicked="handleButtonClick" />
+                :isActive="activeButton === 'Inicio'" @clicked="handleButtonClick" @click="changePage('/inicio')" />
             <ButonNav title="Cursos" img="libro.png" imgAlternative="libro-blanco.png"
-                :isActive="activeButton === 'Cursos'" @clicked="handleButtonClick" />
+                :isActive="activeButton === 'Cursos'" @clicked="handleButtonClick" @click="changePage('/cursos')" />
             <ButonNav title="Desafios" img="desafio.png" imgAlternative="desafio-blanco.png"
-                :isActive="activeButton === 'Desafios'" @clicked="handleButtonClick" />
+                :isActive="activeButton === 'Desafios'" @clicked="handleButtonClick" @click="changePage('/desafios')" />
         </section>
 
         <section class="section-comunity">
             <h2 class="learning-title">COMUNIDAD</h2>
             <ButonNav title="Ayudantes" img="personas.png" imgAlternative="personas-blanco.png"
-                :isActive="activeButton === 'Ayudantes'" @clicked="handleButtonClick" />
+                :isActive="activeButton === 'Ayudantes'" @clicked="handleButtonClick"
+                @click="changePage('/ayudantes')" />
             <ButonNav title="Discord" img="libro.png" imgAlternative="libro-blanco.png"
-                :isActive="activeButton === 'Discord'" @clicked="handleButtonClick" />
-            <ButonNav title="WhatsApp" img="desafio.png" imgAlternative="desafio-blanco.png"
-                :isActive="activeButton === 'WhatsApp'" @clicked="handleButtonClick" />
+                :isActive="activeButton === 'Discord'" @clicked="handleButtonClick" @click="changePage('/discord')" />
+            <ButonNav title="WhatsApp" img="whatsapp.png" imgAlternative="whatsapp-blanco.png"
+                :isActive="activeButton === 'Whatsapp'" @clicked="handleButtonClick" @click="changePage('/whatsapp')" />
         </section>
 
 
