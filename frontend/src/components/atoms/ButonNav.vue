@@ -73,15 +73,10 @@ function handlerButon(): void {
 
 }
 
-.buton-container--true:hover {
-    transform: scale(1.05)
-}
 
 .buton-container--true:active {
     transform: scale(1)
 }
-
-
 
 
 .buton-img {

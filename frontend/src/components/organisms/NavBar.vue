@@ -87,13 +87,13 @@ function changePage(ruta: string): void {
 }
 
 .logo-img {
-    height: 55%;
+    height: 52%;
     width: auto;
-    margin-right: 0.7vw;
+    margin-right: 0.5vw;
 }
 
 .logo-title--h1 {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
