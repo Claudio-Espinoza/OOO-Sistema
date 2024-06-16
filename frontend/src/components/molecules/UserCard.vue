@@ -8,14 +8,14 @@
             <p class="card-text--user">Desconocido</p>
             <small class="card-text--logger">Iniciar sesion</small>
         </div>
-        <img src="/src/assets/icon/user.png" alt="">
+        <img class="img" src="/src/assets/icon/user.png" alt="">
     </header>
 
 </template>
 
 <style scoped>
 .card-container {
-    width: 14%;
+    width: 18%;
     height: 70%;
 
     display: flex;
@@ -27,26 +27,32 @@
 }
 
 .card-text {
+    margin-right: 10%;
     width: 100%;
     height: 100%;
 
     display: flex;
+
     flex-direction: column;
-    align-items: center;
+    align-items: end;
     justify-content: center;
 }
 
 .card-text--user {
-    padding: 0.5vh;
-    font-size: large;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--font-color);
-
     margin: 0;
+    padding: 0;
+}
+
+.img {
+    width: auto;
+    height: 95%;
 }
 
 .card-text--logger {
-    font-size: medium;
+    font-size: 0.8rem;
     font-weight: 400;
     color: var(--color-morado);
     cursor: pointer;

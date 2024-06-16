@@ -93,7 +93,7 @@ function changePage(ruta: string): void {
 }
 
 .logo-title--h1 {
-    font-size: larger;
+    font-size: 1rem;
     font-weight: 500;
 }
 

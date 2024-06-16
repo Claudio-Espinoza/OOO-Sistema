@@ -35,7 +35,7 @@ const props = defineProps<Props>();
 }
 
 .header-title {
-    font-size: 2.5vw;
+    font-size: 2.5rem;
     font-family: var(--font-family);
     color: var(--font-color);
 }
