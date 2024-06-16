@@ -65,7 +65,6 @@ function changePage(ruta: string): void {
 .navbar-container {
     border-right: var(--borde);
     background-color: var(--background-color);
-
     width: 16%;
     height: 100vh;
 
@@ -111,7 +110,7 @@ function changePage(ruta: string): void {
 
 .learning-title {
     font-size: medium;
-    font-weight: 500;
+    font-weight: 400;
     color: #686868;
     width: 80%;
 

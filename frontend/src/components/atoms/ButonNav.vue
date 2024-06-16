@@ -29,7 +29,7 @@ function handlerButon(): void {
 
 <style scoped>
 .buton-container--false {
-
+    border: none;
     width: 75%;
     height: 8vh;
 
@@ -41,22 +41,24 @@ function handlerButon(): void {
     color: var(--font-color);
     font-family: var(--font-family);
     padding: 0.3vh 0.3vh 0.3vh 0.7vw;
-
+    transition: all 0.2s;
     cursor: pointer;
 
 }
 
 .buton-container--false:hover {
-    transform: scale(1.05)
+    transform: scale(1.05);
+    background: none;
 }
 
 .buton-container--false:active {
-    transform: scale(1)
+    transform: scale(1);
 }
 
 .buton-container--true {
     width: 75%;
     height: 8vh;
+    border: none;
 
     display: flex;
     flex-direction: row;

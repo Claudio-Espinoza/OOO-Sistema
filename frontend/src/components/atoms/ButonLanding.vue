@@ -14,6 +14,7 @@ const props = defineProps({
 
 <style scoped>
 button {
+    border: none;
     font-weight: 700;
     display: flex;
     place-content: center;
