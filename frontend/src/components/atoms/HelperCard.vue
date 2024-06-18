@@ -21,9 +21,10 @@ const props = defineProps<Props>();
             <small class="card-content--rol">{{ props.role }}</small>
         </div>
         <div class="card-red">
-            <a href="https://discord.gg/CmbgBYFjUc" target="_blank"><img src="/src/assets/icon/discord.png" alt=""></a>
-            <a href="" target="_blank"><img src="/src/assets/icon/whatsapp.png" alt=""></a>
-            <a href="" target="_blank"><img src="/src/assets/icon/github.png" alt=""></a>
+            <a v-if="props.isDiscord" href="https://discord.gg/CmbgBYFjUc" target="_blank"><img
+                    src="/src/assets/icon/discord.png" alt=""></a>
+            <a v-if="props.isWhatsApp" href="" target="_blank"><img src="/src/assets/icon/whatsapp.png" alt=""></a>
+            <a v-if="props.isGitHub" href="" target="_blank"><img src="/src/assets/icon/github.png" alt=""></a>
         </div>
 
     </div>
@@ -82,7 +83,9 @@ const props = defineProps<Props>();
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 1vw;
+
 
     flex-direction: row;
     box-sizing: border-box;
@@ -92,7 +95,7 @@ const props = defineProps<Props>();
 
 a>img {
     width: auto;
-    height: 60%;
+    height: 45%;
     cursor: pointer;
 }
 

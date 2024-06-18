@@ -1,8 +1,11 @@
 <script setup lang="ts">
-const props = defineProps({
+
+interface Props {
     type: String,
     content: String
-})
+}
+
+const props = defineProps<Props>();
 
 </script>
 

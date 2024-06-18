@@ -2,13 +2,13 @@
 import HelperCard from '../atoms/HelperCard.vue';
 import { ref } from 'vue'
 const allHelpers = [
-    { name: 'Intregando 1', role: 'Rol 1', isDiscord: true, isWhatsApp: true, isGitHub: true },
+    { name: 'Intregando 1', role: 'Rol 1', isDiscord: false, isWhatsApp: false, isGitHub: true },
     { name: 'Intregando 2', role: 'Rol 2', isDiscord: true, isWhatsApp: true, isGitHub: true },
-    { name: 'Intregando 3', role: 'Rol 3', isDiscord: false, isWhatsApp: true, isGitHub: true },
-    { name: 'Intregando 4', role: 'Rol 4', isDiscord: true, isWhatsApp: true, isGitHub: true },
-    { name: 'Intregando 5', role: 'Rol 5', isDiscord: false, isWhatsApp: true, isGitHub: true },
+    { name: 'Intregando 3', role: 'Rol 3', isDiscord: false, isWhatsApp: false, isGitHub: true },
+    { name: 'Intregando 4', role: 'Rol 4', isDiscord: true, isWhatsApp: true, isGitHub: false },
+    { name: 'Intregando 5', role: 'Rol 5', isDiscord: false, isWhatsApp: false, isGitHub: true },
     { name: 'Intregando 6', role: 'Rol 6', isDiscord: false, isWhatsApp: true, isGitHub: true },
-    { name: 'Intregando 7', role: 'Rol 7', isDiscord: true, isWhatsApp: true, isGitHub: true }
+    { name: 'Intregando 7', role: 'Rol 7', isDiscord: true, isWhatsApp: true, isGitHub: false }
 ];
 const container = ref<HTMLElement | null>(null);
 
