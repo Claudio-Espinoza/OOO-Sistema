@@ -1,4 +1,8 @@
 <script setup lang="ts">
+const props = defineProps({
+    name: String,
+    role: String
+})
 
 </script>
 
@@ -6,16 +10,13 @@
     <div class="card">
         <div class="card-content">
             <img class="card-content--img" src="/src/assets/img/prueba.jfif" alt="">
-            <h3 class="card-content--name">Claudio Espinoza</h3>
-            <small class="card-content--rol">Pro-secretario</small>
+            <h3 class="card-content--name">{{ props.name }}</h3>
+            <small class="card-content--rol">{{ props.role }}</small>
         </div>
         <div class="card-red">
-            <a href=""><img src="/src/assets/icon/discord.png" alt=""></a>
-            <a href=""><img src="/src/assets/icon/whatsapp.png" alt=""></a>
-            <a href=""><img src="/src/assets/icon/github.png" alt=""></a>
-
-
-
+            <a href="https://discord.gg/CmbgBYFjUc" target="_blank"><img src="/src/assets/icon/discord.png" alt=""></a>
+            <a href="" target="_blank"><img src="/src/assets/icon/whatsapp.png" alt=""></a>
+            <a href="" target="_blank"><img src="/src/assets/icon/github.png" alt=""></a>
         </div>
 
     </div>
@@ -23,14 +24,14 @@
 
 <style scoped>
 .card {
-    width: 25%;
+    width: 22%;
     height: 65%;
     transition: all 0.5s;
     border-radius: 1.5vh;
+    flex-shrink: 0;
     border: var(--borde);
     box-shadow: 1vh 1vh 2vh rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-
     backdrop-filter: blur(1vh);
 }
 

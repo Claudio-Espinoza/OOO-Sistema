@@ -36,7 +36,7 @@ import ButonLanding from '../components/atoms/ButonLanding.vue';
 <style scoped>
 .container-main {
     width: 95%;
-    height: 100%;
+    height: 80%;
 
     display: flex;
     flex-direction: row;
