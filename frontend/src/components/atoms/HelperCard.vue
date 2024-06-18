@@ -1,8 +1,15 @@
 <script setup lang="ts">
-const props = defineProps({
-    name: String,
-    role: String
-})
+
+interface Props {
+    name?: String,
+    role?: String,
+    isDiscord?: Boolean,
+    isWhatsApp?: Boolean,
+    isGitHub?: Boolean
+}
+
+const props = defineProps<Props>();
+
 
 </script>
 
