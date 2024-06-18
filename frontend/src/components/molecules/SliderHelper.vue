@@ -31,15 +31,15 @@ const retreatGroup = () => {
     <section class="container-section" ref="container">
         <HelperCard v-for="(helper, index) in allHelpers" :key="index" :name="helper.name" :role="helper.role"
             :is-discord="helper.isDiscord" :is-git-hub="helper.isGitHub" :is-whats-app="helper.isWhatsApp" />
-        <button class="next" @click="advanceGroup">Avanzar</button>
-        <button class="prev" @click="retreatGroup">retroceder</button>
+        <button class="next" @click="advanceGroup"><img src="/src/assets/icon/flecha-inverse.png" alt=""></button>
+        <button class="prev" @click="retreatGroup"><img src="/src/assets/icon/flecha.png" alt=""></button>
     </section>
 </template>
 
 <style scoped>
 .container-section {
     position: relative;
-    width: 95%;
+    width: 92%;
     height: 100%;
     display: flex;
     justify-content: start;
@@ -47,26 +47,41 @@ const retreatGroup = () => {
     flex-direction: row;
     gap: 1vw;
     overflow: hidden;
-    padding: 1em;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
 .prev,
 .next {
+    width: 2.5vw;
+    height: 9vh;
+    border-radius: 0.5vw;
     position: fixed;
     top: 50%;
-    padding: 10px;
-    background-color: #ccc;
-    border: none;
+    border: var(--borde);
     cursor: pointer;
 }
 
+.prev>img,
+.next>img {
+    width: 100%;
+    height: auto;
+}
+
+
 .prev {
-    left: 15%;
+    left: 16%;
 }
 
 .next {
-    right: 0;
+    right: 2%;
+}
+
+.next:hover {
+    transform: scale(0.95);
+}
+
+.prev:hover {
+    transform: scale(0.95);
 }
 </style>

@@ -32,13 +32,13 @@ const props = defineProps<Props>();
 
 <style scoped>
 .card {
-    width: 22%;
-    height: 65%;
+    width: 21%;
+    height: 60%;
     transition: all 0.5s;
     border-radius: 1.5vh;
     flex-shrink: 0;
     border: var(--borde);
-    box-shadow: 1vh 1vh 2vh rgba(0, 0, 0, 0.1);
+    box-shadow: 0.5vh 0.5vh 1vh rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     backdrop-filter: blur(1vh);
 }
