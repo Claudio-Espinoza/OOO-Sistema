@@ -31,7 +31,8 @@ function handlerButon(): void {
 .buton-container--false {
     border: none;
     width: 75%;
-    height: 8vh;
+    height: 10vh;
+    margin: 0;
 
     background-color: var(--background-color);
     display: flex;
@@ -58,9 +59,9 @@ function handlerButon(): void {
 
 .buton-container--true {
     width: 75%;
-    height: 8vh;
+    height: 10vh;
     border: none;
-
+    margin: 0;
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -124,7 +124,7 @@ function changePage(ruta: string): void {
     gap: 1.5vh;
 
     align-items: end;
-    height: 20%;
+    height: 15%;
     width: 100%;
 }
 </style>
