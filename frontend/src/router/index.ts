@@ -27,14 +27,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../pages/HelperPage.vue'),
   },
   {
-    path: '/discord',
-    name: 'discord',
-    component: () => import('../pages/DiscordPage.vue'),
-  },
-  {
-    path: '/whatsapp',
-    name: 'whatsapp',
-    component: () => import('../pages/WhatsPage.vue'),
+    path: '/comunidad',
+    name: 'comunidad',
+    component: () => import('../pages/ComunityPage.vue'),
   },
 ];
 

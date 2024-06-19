@@ -51,10 +51,9 @@ function changePage(ruta: string): void {
             <ButonNav title="Ayudantes" img="personas.png" imgAlternative="personas-blanco.png"
                 :isActive="activeButton === 'Ayudantes'" @clicked="handleButtonClick"
                 @click="changePage('/ayudantes')" />
-            <ButonNav title="Discord" img="libro.png" imgAlternative="libro-blanco.png"
-                :isActive="activeButton === 'Discord'" @clicked="handleButtonClick" @click="changePage('/discord')" />
-            <ButonNav title="WhatsApp" img="whatsapp.png" imgAlternative="whatsapp-blanco.png"
-                :isActive="activeButton === 'Whatsapp'" @clicked="handleButtonClick" @click="changePage('/whatsapp')" />
+            <ButonNav title="Comunidad" img="libro.png" imgAlternative="libro-blanco.png"
+                :isActive="activeButton === 'Comunidad'" @clicked="handleButtonClick"
+                @click="changePage('/comunidad')" />
         </section>
 
 

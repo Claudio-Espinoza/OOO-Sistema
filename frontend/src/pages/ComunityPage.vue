@@ -5,7 +5,7 @@ import MainLayout from '../layouts/MainLayout.vue';
 <template>
     <MainLayout>
         <article class="container-main">
-            <h1>WhatsApp</h1>
+            <h1>Discord</h1>
         </article>
 
     </MainLayout>
@@ -13,8 +13,7 @@ import MainLayout from '../layouts/MainLayout.vue';
 
 <style scoped>
 .container-main {
-    width: 95%;
+    width: 100%;
     height: 100%;
-    background-color: aqua;
 }
 </style>

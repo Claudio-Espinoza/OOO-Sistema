@@ -33,6 +33,7 @@ function handlerButon(): void {
     width: 75%;
     height: 8vh;
 
+    background-color: var(--background-color);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -88,8 +89,8 @@ function handlerButon(): void {
 }
 
 .buton-title {
-    font-size: medium;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 500;
 
 }
 </style>

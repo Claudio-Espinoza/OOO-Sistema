@@ -79,8 +79,6 @@ import ButonLanding from '../components/atoms/ButonLanding.vue';
         flex-direction: row;
         flex-wrap: wrap;
     }
-
-
 }
 
 @layer img-container {
@@ -109,7 +107,7 @@ import ButonLanding from '../components/atoms/ButonLanding.vue';
         z-index: 0;
         border-radius: 1vw;
 
-        top: 19%;
+        top: 17%;
         left: 4%;
     }
 
