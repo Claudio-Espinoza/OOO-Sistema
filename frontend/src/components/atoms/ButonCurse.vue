@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 interface Props {
-    type: String,
-    content: String
+    type: string,
+    content: string
 }
 
 const props = defineProps<Props>();
@@ -24,7 +24,6 @@ button {
     height: 60vh;
 
     box-shadow: 1vh 1vh 2vh rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
 
     backdrop-filter: blur(1vh);
     border-radius: 1vw;

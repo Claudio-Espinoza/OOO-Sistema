@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 interface Props {
-    type: String,
-    content: String
+    type: string,
+    content: string
 }
 
 const props = defineProps<Props>();
