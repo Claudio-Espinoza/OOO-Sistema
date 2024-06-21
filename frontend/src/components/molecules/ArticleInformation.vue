@@ -109,7 +109,7 @@ strong {
     border: 0.4vh solid var(--color-morado);
     color: var(--color-morado);
     border-radius: 0.8vw;
-    width: 80%;
+    width: 60%;
     height: 10%;
     font-weight: 500;
     cursor: pointer;

@@ -34,7 +34,7 @@ const props = defineProps<Props>();
 }
 
 .container-article {
-    width: 38.8%;
+    width: 30%;
     height: 100%;
 
     display: flex;
