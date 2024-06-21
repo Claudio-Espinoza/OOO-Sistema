@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import MainLayout from '../layouts/MainLayout.vue';
-import ButonCurse from '../components/atoms/ButonCurse.vue';
-
+import ArticleSection from '../components/organisms/ArticleSection.vue';
 </script>
 
 <template>
     <MainLayout>
         <article class="container-main">
-            <ButonCurse type="java" content="Introducción a Programación" />
-            <ButonCurse type="java" content="Programación Orientada a Objeto" />
-            <ButonCurse type="python" content="Taller de Programación" />
+            <ArticleSection />
+            <div class="content">
+
+            </div>
+
         </article>
     </MainLayout>
 </template>
@@ -20,8 +21,12 @@ import ButonCurse from '../components/atoms/ButonCurse.vue';
     height: 100%;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: space-evenly;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
 }
 </style>
