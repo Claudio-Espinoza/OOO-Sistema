@@ -6,7 +6,9 @@ import ArticleSection from '../components/organisms/ArticleSection.vue';
 <template>
     <MainLayout>
         <article class="container-main">
-            <ArticleSection />
+            <ArticleSection title="Manejo de arreglos" sub-title="Introducción a la programación" view="1.000"
+                review="4.5" autor="Nombre autor" type="java" />
+
             <div class="content">
 
             </div>
