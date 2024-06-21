@@ -19,8 +19,8 @@
     height: 80%;
 
     display: flex;
-    border: var(--borde);
-    border-radius: 0.5vw;
+    border-left: var(--borde);
+    padding-left: 2%;
 
     align-items: center;
     justify-content: end;
