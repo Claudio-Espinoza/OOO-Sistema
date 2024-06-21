@@ -34,9 +34,25 @@ const props = defineProps<Props>();
             </div>
 
             <div class="information-review">
+                <div class="review-ordenator">
+                    <div class="review-clasification">
+                        <small class="clasification-view">Vistas: </small>
+                        <small class="clasification-view--valor">{{ props.view }}</small>
+                    </div>
 
+                    <div>
+                        <small class="clasification-view">Calificación: </small>
+                        <small class="clasification-review">{{ props.review }} / 5</small>
+                    </div>
+                </div>
 
+                <div class="information-autor">
+                    <small class="clasification-view">Autor: </small>
+                    <small class="clasification-view-valor"> {{ props.autor }}</small>
+
+                </div>
             </div>
+
 
 
         </section>
@@ -47,6 +63,11 @@ const props = defineProps<Props>();
 </template>
 
 <style scoped>
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .container-article {
     width: 35%;
     height: 95%;
@@ -80,8 +101,6 @@ const props = defineProps<Props>();
     justify-content: center;
 }
 
-
-
 .information-title {
     height: 50%;
     width: 100%;
@@ -99,10 +118,36 @@ const props = defineProps<Props>();
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 
-    background-color: rgb(44, 167, 172);
 }
+
+.review-ordenator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+
+    width: 90%;
+    height: 10%;
+}
+
+.information-autor {
+    width: 75%;
+    height: 7%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.clasification-view {
+    color: var(--color-naranja);
+    font-weight: 500;
+}
+
+
 
 
 .title-img-java {
