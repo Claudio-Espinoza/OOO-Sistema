@@ -20,8 +20,9 @@ import ArticleSection from '../components/organisms/ArticleSection.vue';
 
 <style scoped>
 .container-main {
-    width: 95%;
+    width: 97.5%;
     height: 100%;
+    margin-left: 2.5%;
 
     display: flex;
     flex-direction: row-reverse;

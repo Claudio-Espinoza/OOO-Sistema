@@ -32,10 +32,11 @@ const props = defineProps<Props>();
     align-items: start;
 
     box-sizing: border-box;
+    border-top: var(--borde);
 }
 
 .section--h4 {
-    margin-top: 10%;
+    margin-top: 8%;
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 2%;

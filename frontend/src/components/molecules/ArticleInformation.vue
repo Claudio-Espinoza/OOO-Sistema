@@ -112,9 +112,11 @@ strong {
     width: 80%;
     height: 10%;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .information-buton:hover {
+    cursor: pointer;
     transform: scale(1.05);
 }
 
@@ -122,6 +124,7 @@ strong {
     transform: scale(0.95);
     color: #fff;
     background-color: var(--color-morado);
+    cursor: pointer;
 
 }
 </style>

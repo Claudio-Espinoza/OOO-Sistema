@@ -34,8 +34,8 @@ const props = defineProps<Props>();
 }
 
 .container-article {
-    width: 35%;
-    height: 95%;
+    width: 38.8%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
@@ -43,7 +43,6 @@ const props = defineProps<Props>();
     justify-content: center;
 
     box-sizing: border-box;
-    border: var(--borde);
-    border-radius: 0.5vw;
+    border-left: var(--borde);
 }
 </style>

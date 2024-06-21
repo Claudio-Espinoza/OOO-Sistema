@@ -15,7 +15,7 @@
 
 <style scoped>
 .card-container {
-    width: 18%;
+    width: 24%;
     height: 80%;
 
     display: flex;
