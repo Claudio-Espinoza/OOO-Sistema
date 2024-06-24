@@ -3,20 +3,15 @@ import MainLayout from '../layouts/MainLayout.vue';
 import ArticleSection from '../components/organisms/ArticleSection.vue';
 import ButonFilter from '../components/atoms/ButonFilter.vue';
 import ChallengerCard from '../components/atoms/ChallengerCard.vue'
-
+import { CardDescription } from '@/model/Challenger.ts';
 import { ref } from 'vue';
 
-let activeButton = ref('');
+let activeButton = ref('Introducción a Programación');
 
 const setActiveButton = (newActiveButton: string) => {
     activeButton.value = newActiveButton;
 };
 
-interface CardDescription {
-    title?: string,
-    course?: string,
-    type?: string
-}
 
 const challengerCards = [
     { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 1" },
@@ -80,9 +75,7 @@ function handleCardClick(cardAttributes: CardDescription) {
                         @cardClicked="handleCardClick" />
 
                 </div>
-
             </section>
-
         </article>
     </MainLayout>
 </template>
@@ -110,7 +103,8 @@ function handleCardClick(cardAttributes: CardDescription) {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    margin-left: 1.2%;
     width: 92.5%;
 
     height: 15%;
@@ -138,7 +132,7 @@ function handleCardClick(cardAttributes: CardDescription) {
 
     justify-content: start;
     align-content: flex-start;
-    gap: 1vw;
+    gap: 1.5vw;
     overflow-x: hidden;
     overflow-y: auto;
     padding: 1%;

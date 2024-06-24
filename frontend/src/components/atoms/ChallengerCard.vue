@@ -1,11 +1,7 @@
 <script setup lang="ts">
-interface Props {
-    title?: string,
-    course?: string,
-    type?: string
-}
+import { ChallengerCardProps } from '@/model/Challenger.ts'
 
-const props = defineProps<Props>();
+const props = defineProps<ChallengerCardProps>();
 const emits = defineEmits(['cardClicked']);
 
 
@@ -15,7 +11,7 @@ function handleClick() {
 </script>
 
 <template>
-    <div class="card" @click="handleClick">
+    <button class="card" @click="handleClick">
         <div :class="'card-img-' + props.type">
             <img v-if="props.type === 'java'" src="/src/assets/icon/java-blanco.png" alt="">
             <img v-if="props.type === 'python'" src="/src/assets/icon/python-blanco.png" alt="">
@@ -25,29 +21,22 @@ function handleClick() {
             <h4>{{ props.title }}</h4>
             <small> {{ props.course }} </small>
         </div>
-    </div>
+    </button>
 </template>
 
 <style scoped>
 .card {
-    width: 30%;
+    width: 28%;
     height: 15%;
     border: var(--borde);
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-direction: row;
     border-radius: 0.5vw;
     cursor: pointer;
+    font-size: 1rem;
 
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card:active {
-    transform: scale(1);
 }
 
 small {
@@ -62,6 +51,7 @@ small {
     align-items: center;
     justify-content: center;
     border-radius: 0.5vw;
+    margin-right: 10%;
 }
 
 .card-img-java {
@@ -76,5 +66,9 @@ small {
 .card-img-python>img {
     width: 70%;
     height: auto;
+}
+
+div {
+    text-align: start;
 }
 </style>

@@ -1,15 +1,7 @@
 <script setup lang="ts">
+import { ArticleInformationProps } from '@/model/Challenger.ts'
 
-interface Props {
-    title: string,
-    subTitle: string,
-    review: string,
-    autor: string,
-    type: string
-}
-
-const props = defineProps<Props>();
-
+const props = defineProps<ArticleInformationProps>();
 
 </script>
 

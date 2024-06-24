@@ -1,10 +1,6 @@
 <script setup lang="ts">
-
-interface Props {
-    description: string
-}
-
-const props = defineProps<Props>();
+import { ArticleDescriptionProps } from '@/model/Challenger.ts'
+const props = defineProps<ArticleDescriptionProps>();
 
 
 </script>
@@ -14,7 +10,6 @@ const props = defineProps<Props>();
         <h4 class="section--h4">Descripcion del desafio</h4>
         <p class="section--p"> {{ props.description }}</p>
     </section>
-
 </template>
 
 <style scoped>

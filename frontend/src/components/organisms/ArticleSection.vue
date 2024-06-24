@@ -1,18 +1,9 @@
 <script setup lang="ts">
 import ArticleDescription from '../molecules/ArticleDescription.vue';
 import ArticleInformation from '../molecules/ArticleInformation.vue';
+import { ArticleSectionProps } from '@/model/Challenger.ts';
 
-interface Props {
-    title: string,
-    subTitle: string,
-    review: string,
-    autor: string,
-    type: string,
-    description: string
-}
-
-const props = defineProps<Props>();
-
+const props = defineProps<ArticleSectionProps>();
 
 </script>
 
