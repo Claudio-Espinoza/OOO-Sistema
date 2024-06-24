@@ -12,6 +12,12 @@ const setActiveButton = (newActiveButton: string) => {
     activeButton.value = newActiveButton;
 };
 
+interface CardDescription {
+    title?: string,
+    course?: string,
+    type?: string
+}
+
 const challengerCards = [
     { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 1" },
     { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 2" },
@@ -35,6 +41,10 @@ const challengerCards = [
     { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 6" },
     { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 7" }
 ];
+
+function handleCardClick(cardAttributes: CardDescription) {
+    console.log('Card clicked:', cardAttributes);
+}
 
 </script>
 
@@ -66,7 +76,8 @@ const challengerCards = [
                 <div class="content-card-objet">
                     <ChallengerCard
                         v-for="(item, index) in challengerCards.filter(card => card.course === activeButton)"
-                        :key="index" :course="item.course" :title="item.title" :type="item.type" />
+                        :key="index" :course="item.course" :title="item.title" :type="item.type"
+                        @cardClicked="handleCardClick" />
 
                 </div>
 

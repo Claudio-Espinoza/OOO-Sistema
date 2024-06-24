@@ -6,10 +6,16 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const emits = defineEmits(['cardClicked']);
+
+
+function handleClick() {
+    emits('cardClicked', { title: props.title, course: props.course, type: props.type });
+}
 </script>
 
 <template>
-    <div class="card">
+    <div class="card" @click="handleClick">
         <div :class="'card-img-' + props.type">
             <img v-if="props.type === 'java'" src="/src/assets/icon/java-blanco.png" alt="">
             <img v-if="props.type === 'python'" src="/src/assets/icon/python-blanco.png" alt="">

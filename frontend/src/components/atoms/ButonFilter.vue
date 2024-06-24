@@ -15,8 +15,6 @@ const props = defineProps<Props>();
 
 <style scoped>
 .button-false {
-    border: none;
-
     width: 28%;
     height: 50%;
 

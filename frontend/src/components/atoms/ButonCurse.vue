@@ -13,7 +13,6 @@ const props = defineProps<Props>();
     <button :class="'button-' + props.type">
         <img :src="'/src/assets/icon/' + props.type + '.png'" alt="">
         {{ props.content }}
-
     </button>
 </template>
 
