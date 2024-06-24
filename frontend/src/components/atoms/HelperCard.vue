@@ -1,16 +1,7 @@
 <script setup lang="ts">
+import { Helper } from '@/model/Helper.ts';
 
-interface Props {
-    name?: string,
-    role?: string,
-    isDiscord?: boolean,
-    isWhatsApp?: boolean,
-    isGitHub?: boolean
-}
-
-const props = defineProps<Props>();
-
-
+const props = defineProps<Helper>();
 </script>
 
 <template>
@@ -53,9 +44,7 @@ const props = defineProps<Props>();
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-direction: column;
-
 }
 
 .card-content--img {
@@ -85,11 +74,8 @@ const props = defineProps<Props>();
     align-items: center;
     justify-content: center;
     gap: 1vw;
-
-
     flex-direction: row;
     box-sizing: border-box;
-
     border-top: var(--borde);
 }
 
@@ -102,7 +88,6 @@ a>img {
 a {
     width: 20%;
     height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;

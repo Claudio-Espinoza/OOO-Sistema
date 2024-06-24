@@ -22,6 +22,5 @@ import ButonCurse from '../components/atoms/ButonCurse.vue';
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-
 }
 </style>
