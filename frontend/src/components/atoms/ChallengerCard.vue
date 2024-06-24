@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface Props {
-    title?: String,
-    course?: String,
+    title?: string,
+    course?: string,
     type?: string
 }
 
@@ -24,7 +24,7 @@ const props = defineProps<Props>();
 
 <style scoped>
 .card {
-    width: 31%;
+    width: 30%;
     height: 15%;
     border: var(--borde);
     display: flex;
@@ -32,7 +32,16 @@ const props = defineProps<Props>();
     justify-content: space-around;
     flex-direction: row;
     border-radius: 0.5vw;
+    cursor: pointer;
 
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card:active {
+    transform: scale(1);
 }
 
 small {

@@ -23,9 +23,9 @@ import ButonComunity from '../components/atoms/ButonComunity.vue';
                     nosotros en este apasionante viaje de descubrimiento y desarrollo de habilidades!
                 </p>
                 <div class="info-button">
-                    <ButonComunity url="/src/assets/icon/github-blanco.png" />
-                    <ButonComunity url="/src/assets/icon/whatsapp-blanco.png" />
-                    <ButonComunity url="/src/assets/icon/discord-blanco.png" />
+                    <ButonComunity url="/src/assets/icon/github-blanco.png" link=" " />
+                    <ButonComunity url="/src/assets/icon/whatsapp-blanco.png" link=" " />
+                    <ButonComunity url="/src/assets/icon/discord-blanco.png" link=" " />
                 </div>
             </article>
 

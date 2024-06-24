@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
 interface Props {
-    name?: String,
-    role?: String,
-    isDiscord?: Boolean,
-    isWhatsApp?: Boolean,
-    isGitHub?: Boolean
+    name?: string,
+    role?: string,
+    isDiscord?: boolean,
+    isWhatsApp?: boolean,
+    isGitHub?: boolean
 }
 
 const props = defineProps<Props>();

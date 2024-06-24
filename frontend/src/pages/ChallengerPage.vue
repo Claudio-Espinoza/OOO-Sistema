@@ -6,11 +6,36 @@ import ChallengerCard from '../components/atoms/ChallengerCard.vue'
 
 import { ref } from 'vue';
 
-let activeButton = ref('Introducción a Programación');
+let activeButton = ref('');
 
 const setActiveButton = (newActiveButton: string) => {
     activeButton.value = newActiveButton;
 };
+
+const challengerCards = [
+    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 1" },
+    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 2" },
+    { course: "Programación Orientada a Objetos", type: "java", title: "Manejo de arreglos 3" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 4" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 5" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 6" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 7" },
+    { course: "Programación Orientada a Objetos", type: "java", title: "Manejo de arreglos 1" },
+    { course: "Programación Orientada a Objetos", type: "java", title: "Manejo de arreglos 2" },
+    { course: "Programación Orientada a Objetos", type: "java", title: "Manejo de arreglos 3" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 4" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 5" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 6" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 7" },
+    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 1" },
+    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 2" },
+    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 3" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 4" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 5" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 6" },
+    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 7" }
+];
+
 </script>
 
 <template>
@@ -39,27 +64,9 @@ const setActiveButton = (newActiveButton: string) => {
 
 
                 <div class="content-card-objet">
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 1" />
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 2" />
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 3" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 4" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 5" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 6" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 7" />
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 1" />
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 2" />
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 3" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 4" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 5" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 6" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 7" />
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 1" />
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 2" />
-                    <ChallengerCard course="Introducción a Programación" type="java" title="Manejo de arreglos 3" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 4" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 5" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 6" />
-                    <ChallengerCard course="Introducción a Programación" type="python" title="Manejo de arreglos 7" />
+                    <ChallengerCard
+                        v-for="(item, index) in challengerCards.filter(card => card.course === activeButton)"
+                        :key="index" :course="item.course" :title="item.title" :type="item.type" />
 
                 </div>
 
@@ -123,6 +130,7 @@ const setActiveButton = (newActiveButton: string) => {
     gap: 1vw;
     overflow-x: hidden;
     overflow-y: auto;
+    padding: 1%;
 }
 
 ::-webkit-scrollbar {
