@@ -1,13 +1,7 @@
 <script setup lang="ts">
+import { LandingProps } from '@/model/Landing.ts'
 
-interface Props {
-    type: string,
-    content: string
-}
-
-const props = defineProps<Props>();
-
-
+const props = defineProps<LandingProps>();
 </script>
 
 <template>
@@ -37,14 +31,6 @@ button {
         background-color: var(--color-gris);
         color: var(--font-color);
     }
-
-    .button-intro:hover {
-        transform: scale(1.05);
-    }
-
-    .button-intro:active {
-        transform: scale(1);
-    }
 }
 
 @layer poo {
@@ -52,28 +38,12 @@ button {
         background-color: var(--color-naranja);
         color: var(--font-color);
     }
-
-    .button-poo:hover {
-        transform: scale(1.05);
-    }
-
-    .button-poo:active {
-        transform: scale(1);
-    }
 }
 
 @layer taller {
     .button-taller {
         background-color: var(--color-morado);
         color: #f2f2f2;
-    }
-
-    .button-taller:hover {
-        transform: scale(1.05);
-    }
-
-    .button-taller:active {
-        transform: scale(1);
     }
 }
 </style>
