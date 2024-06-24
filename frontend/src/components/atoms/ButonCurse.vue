@@ -1,12 +1,7 @@
 <script setup lang="ts">
+import { ButonCurseProps } from '@/model/Course.ts';
 
-interface Props {
-    type: string,
-    content: string
-}
-
-const props = defineProps<Props>();
-
+const props = defineProps<ButonCurseProps>();
 </script>
 
 <template>
@@ -50,27 +45,11 @@ button {
     .button-java {
         border: 0.4vh solid var(--color-naranja);
     }
-
-    .button-java:hover {
-        transform: scale(1.05);
-    }
-
-    .button-java:active {
-        transform: scale(0.95);
-    }
 }
 
 @layer python {
     .button-python {
         border: 0.4vh solid var(--color-morado);
-    }
-
-    .button-python:hover {
-        transform: scale(1.05);
-    }
-
-    .button-python:active {
-        transform: scale(0.95);
     }
 }
 </style>

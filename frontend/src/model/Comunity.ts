@@ -1,4 +1,4 @@
 export interface ButonComunityProps {
-    url: string,
-    link: string
+  url: string;
+  link: string;
 }
