@@ -1,19 +1,12 @@
 <script setup lang="ts">
-
-interface Props {
-    url: string,
-    link: string
-}
-
-const props = defineProps<Props>();
-
+import { ButonComunityProps } from '@/model/Comunity.ts'
+const props = defineProps<ButonComunityProps>();
 </script>
 
 <template>
     <button>
         <a href=""><img class="button-img" :src="props.url" alt=""></a>
     </button>
-
 </template>
 
 <style scoped>
@@ -30,14 +23,11 @@ button {
 
 button:hover {
     background-color: var(--color-naranja);
-    transform: scale(1.1);
 }
 
 button:active {
     background-color: var(--color-naranja);
-    transform: scale(0.95);
 }
-
 
 .button-img {
     width: 70%;

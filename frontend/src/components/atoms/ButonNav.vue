@@ -49,12 +49,8 @@ function handlerButon(): void {
 }
 
 .buton-container--false:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
     background: none;
-}
-
-.buton-container--false:active {
-    transform: scale(1);
 }
 
 .buton-container--true {
@@ -77,12 +73,6 @@ function handlerButon(): void {
 
 }
 
-
-.buton-container--true:active {
-    transform: scale(1)
-}
-
-
 .buton-img {
     height: auto;
     width: 13%;
@@ -92,6 +82,5 @@ function handlerButon(): void {
 .buton-title {
     font-size: 0.8rem;
     font-weight: 500;
-
 }
 </style>

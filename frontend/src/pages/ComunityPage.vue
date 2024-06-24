@@ -46,11 +46,8 @@ import ButonComunity from '../components/atoms/ButonComunity.vue';
 .container-main {
     display: flex;
     flex-direction: row;
-
     align-content: center;
     justify-content: center;
-
-
     width: 95%;
     height: 100%;
 }
@@ -65,10 +62,8 @@ import ButonComunity from '../components/atoms/ButonComunity.vue';
 .main-content {
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
-
     align-items: start;
     justify-content: center;
     gap: 2vw;
@@ -100,10 +95,8 @@ import ButonComunity from '../components/atoms/ButonComunity.vue';
     display: flex;
     align-items: center;
     gap: 2vw;
-
     height: 20%;
     width: 80%;
-
 }
 
 .main-content-div {
