@@ -16,7 +16,12 @@ const handleButtonClick = (title: string) => {
 };
 
 function formatTitle(path: string): string {
-    return path.replace('/', '').charAt(0).toUpperCase() + path.slice(2);
+    const parts = path.split('/');
+    if (parts.length > 1) {
+        const secondPart = parts[1];
+        return secondPart.charAt(0).toUpperCase() + secondPart.slice(1);
+    }
+    return '';
 }
 </script>
 
