@@ -17,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../pages/CoursePage.vue'),
   },
   {
+    path: '/roadmap/:id',
+    name: 'roadmap',
+    component: () => import('../pages/RoadMap.vue'),
+  },
+  {
     path: '/desafios',
     name: 'desafios',
     component: () => import('../pages/ChallengerPage.vue'),
