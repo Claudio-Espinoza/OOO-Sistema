@@ -31,7 +31,7 @@ function handleClick() {
     border: var(--borde);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: row;
     border-radius: 0.5vw;
     cursor: pointer;
@@ -41,6 +41,13 @@ function handleClick() {
 
 small {
     font-style: italic;
+    font-size: 80%;
+
+}
+
+h4 {
+    font-size: 100%;
+    font-weight: 500;
 }
 
 .card-img-java,
@@ -51,7 +58,6 @@ small {
     align-items: center;
     justify-content: center;
     border-radius: 0.5vw;
-    margin-right: 10%;
 }
 
 .card-img-java {
@@ -70,5 +76,11 @@ small {
 
 div {
     text-align: start;
+    width: 78%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+    justify-content: center;
 }
 </style>

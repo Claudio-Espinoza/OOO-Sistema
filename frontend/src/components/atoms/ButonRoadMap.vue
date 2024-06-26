@@ -11,7 +11,7 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-    <aside :class="'button-' + props.type">
+    <aside class="button">
         <div :class="'button-position-' + props.type">
             {{ props.position }}
         </div>
@@ -30,7 +30,7 @@ const props = defineProps<Props>();
     padding: 0;
 }
 
-.button-java {
+.button {
     width: 90%;
     height: 8%;
 
@@ -52,6 +52,8 @@ const props = defineProps<Props>();
     border-radius: 0.5vw;
 }
 
+
+
 .button-position-java {
     display: flex;
     align-items: center;
@@ -65,6 +67,22 @@ const props = defineProps<Props>();
 
     border-radius: 0.2vw;
     background-color: var(--color-naranja);
+}
+
+
+.button-position-python {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.2rem;
+    width: 6%;
+    height: 70%;
+
+    border-radius: 0.2vw;
+    background-color: var(--color-morado);
 }
 
 .button-title {
