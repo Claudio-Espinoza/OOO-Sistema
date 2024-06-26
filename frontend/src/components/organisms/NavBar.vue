@@ -10,7 +10,12 @@ const props = defineProps({
 })
 const emit = defineEmits(['clicked']);
 
-const activeButton: Ref<string> = ref(props.seccion || 'Inicio');
+let activeButton: Ref<string> = ref(props.seccion || 'Inicio');
+
+
+if (props.seccion === 'Roadmap') {
+    activeButton.value = "Cursos"
+}
 
 const handleButtonClick = (title: string) => {
     activeButton.value = title;
