@@ -8,7 +8,6 @@ interface Props {
 const props = defineProps<Props>();
 
 
-
 </script>
 
 <template>
@@ -35,7 +34,8 @@ const props = defineProps<Props>();
 }
 
 .header-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    font-weight: 600;
     font-family: var(--font-family);
     color: var(--font-color);
 }
