@@ -104,10 +104,15 @@ function handleCardClick(cardAttributes: CardDescription) {
     flex-direction: row;
     align-items: center;
     justify-content: start;
-    margin-left: 1.2%;
+    margin-left: 1%;
     width: 92.5%;
 
     height: 15%;
+}
+
+.content-card {
+    margin-left: 1.2%;
+    width: 80.5%;
 }
 
 .content-card--title {
