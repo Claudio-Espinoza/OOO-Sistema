@@ -12,7 +12,7 @@ public class ContenidoLeccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "id_leccion", nullable = false)
