@@ -1,31 +1,11 @@
 <script setup lang="ts">
-import NavBar from '../components/organisms/NavBar.vue';
-import { useRoute } from 'vue-router';
-import { ref, Ref, watch } from 'vue';
+import SourceNav from '../components/organisms/SourceNav.vue';
 
-const route = useRoute();
-let titleGeneral: Ref<string> = ref(formatTitle(route.path));
 
-watch(() => route.path, (newPath) => {
-    titleGeneral.value = formatTitle(newPath);
-});
-
-const handleButtonClick = (title: string) => {
-    titleGeneral.value = title;
-};
-
-function formatTitle(path: string): string {
-    const parts = path.split('/');
-    if (parts.length > 1) {
-        const secondPart = parts[1];
-        return secondPart.charAt(0).toUpperCase() + secondPart.slice(1);
-    }
-    return '';
-}
 </script>
 
 <template>
-    <NavBar @clicked="handleButtonClick" :seccion="titleGeneral" />
+    <SourceNav />
     <main class="container">
         <slot>
 

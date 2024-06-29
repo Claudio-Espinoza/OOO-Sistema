@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const handleButtonGo = (index: string) => {
-    router.push("source/" + index)
+    router.push("/roadmap/source/" + index);
 }
 
 interface Props {
