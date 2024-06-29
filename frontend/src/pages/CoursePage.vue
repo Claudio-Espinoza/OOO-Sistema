@@ -19,10 +19,9 @@ const changePage = (id: string): void => {
                 @click="changePage('Introducción a Programación')" />
 
             <ButonCurse type="java" content="Programación Orientada a Objeto"
-                @click="changePage('Introducción a Programación')" />
+                @click="changePage('Programación Orientada a Objeto')" />
 
-            <ButonCurse type="python" content="Taller de Programación"
-                @click="changePage('Introducción a Programación')" />
+            <ButonCurse type="python" content="Taller de Programación" @click="changePage('Taller de Programación')" />
         </article>
     </MainLayout>
 </template>

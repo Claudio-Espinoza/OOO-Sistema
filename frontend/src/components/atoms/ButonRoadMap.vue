@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const handleButtonGo = (index: string) => {
+    router.push("source/" + index)
+}
 
 interface Props {
     title: string,
@@ -7,6 +14,11 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const emit = defineEmits(['clicked']);
+
+const handleButtonClick = (title: string) => {
+    emit('clicked', title);
+};
 
 </script>
 
@@ -18,7 +30,10 @@ const props = defineProps<Props>();
         <p class="button-title">
             {{ props.title }}
         </p>
-        <button class="button-action">
+        <button class="button-action" @click="handleButtonClick(props.title)">
+            ver
+        </button>
+        <button class="button-action" @click="handleButtonGo(props.title)">
             Ingresar
         </button>
     </aside>
@@ -89,7 +104,7 @@ const props = defineProps<Props>();
     color: var(--font-color);
     font-size: 1rem;
     font-weight: 400;
-    width: 75%;
+    width: 55%;
 }
 
 .button-action {
