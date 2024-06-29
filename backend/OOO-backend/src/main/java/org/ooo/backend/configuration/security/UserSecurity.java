@@ -1,22 +1,26 @@
-package org.ooo.backend.configuration.security.placeholder;
+package org.ooo.backend.configuration.security;
 
 import org.ooo.backend.model.Usuario;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class UserSecurity  implements UserDetails {
+public class UserSecurity implements UserDetails {
 
     private final Usuario usuario;
 
     public UserSecurity(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    private static final Logger logger = LoggerFactory.getLogger(UserSecurity.class);
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -28,12 +32,25 @@ public class UserSecurity  implements UserDetails {
 
     @Override
     public String getPassword() {
-        return usuario.getPassword(); //Validar nulos
+        try {
+            return usuario.getPassword();
+        } catch (NullPointerException e) {
+            logger.error("Error al obtener la contraseña del usuario: ", e);
+            logger.info(e.getMessage());
+            return null;
+        }
     }
 
     @Override
     public String getUsername() {
-        return usuario.getNombre(); //Validar nulos
+        try {
+            return usuario.getNombre();
+        } catch (NullPointerException e) {
+            logger.error("Error al obtener la nombre del usuario: ", e);
+            logger.info(e.getMessage());
+            return null;
+        }
+
     }
 
     //Modificalo a tu conveniencia

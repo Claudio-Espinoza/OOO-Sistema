@@ -1,21 +1,23 @@
-package org.ooo.backend.configuration.security.placeholder;
+package org.ooo.backend.configuration.security;
 
-import org.ooo.backend.model.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.ooo.backend.repository.UsuarioRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserSecurityService  implements UserDetailsService {
 
-    // Aqui va el repositorio para poder usar usuario
+   private final UsuarioRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Aqui va el servicio apra consultar si un usaurio esta en la base de de datos
-
-        return null;
+        return repository.findByNombre(username)
+                .map(UserSecurity::new)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
     }
+
 }
