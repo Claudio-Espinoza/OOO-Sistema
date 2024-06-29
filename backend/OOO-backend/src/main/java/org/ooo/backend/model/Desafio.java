@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "lecciones")
+@Table(name = "desfios")
 @Getter
 @Setter
-public class Leccion {
+public class Desafio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Leccion {
     @Column(nullable = false)
     private double puntuacionNegativa;
 
-    @OneToOne(mappedBy = "leccion", cascade = CascadeType.ALL)
-    private ContenidoLeccion contenidoLeccion;
+    @Column(nullable = false)
+    private String direccionPdfContenido;
 
 }
