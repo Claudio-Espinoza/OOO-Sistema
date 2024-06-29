@@ -5,6 +5,19 @@ body {
   place-items: center;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small,
+p {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
 #app {
   font-family: var(--font-family);
   color: #222;
@@ -32,58 +45,4 @@ button:hover {
 
 button:active {
   transform: scale(0.95);
-}
-
-.markdown-content {
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  line-height: 1.6;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 5%;
-  margin: auto;
-}
-
-.markdown-content p {
-  margin-bottom: 10%;
-}
-
-.markdown-content h1 {
-  font-size: 1rem;
-}
-
-.markdown-content h2,
-.markdown-content h3 {
-  color: #333 !important;
-  margin-bottom: 10%;
-}
-
-.markdown-content a {
-  color: #0366d6;
-  text-decoration: none;
-}
-
-.markdown-content a:hover {
-  text-decoration: underline;
-}
-
-.markdown-content blockquote {
-  border-left: 4px solid #ddd;
-  padding-left: 16px;
-  color: #666;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.markdown-content code {
-  background-color: #f4f4f4;
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-family: 'Courier New', monospace;
-}
-
-.markdown-content pre {
-  background-color: #f4f4f4;
-  padding: 8px;
-  border-radius: 4px;
-  overflow-x: auto;
 }

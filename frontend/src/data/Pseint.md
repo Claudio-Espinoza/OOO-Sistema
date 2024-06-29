@@ -37,8 +37,8 @@
 > - Ejemplos de código: La sección de ejemplos del sitio web oficial ofrece una colección de ejemplos de código en PSeInt para diferentes problemas, lo que puede servir como referencia y guía para los estudiantes: https://sourceforge.net/projects/pseint/
 > - Foros de la comunidad: Existen foros en línea donde los usuarios de PSeInt pueden compartir dudas, intercambiar ideas y obtener ayuda de otros usuarios y expertos en programación: https://sourceforge.net/projects/pseint/
 
+# Conclusión
+
 ---
 
-## Conclusión
-
-> PSeInt es una herramienta educativa valiosa para aquellos que se inician en el mundo de la programación. Su facilidad de uso, sus funcionalidades y la disponibilidad de recursos adicionales lo convierten en una opción ideal para aprender los conceptos básicos de programación de manera clara, efectiva y divertida.
+PSeInt es una herramienta educativa valiosa para aquellos que se inician en el mundo de la programación. Su facilidad de uso, sus funcionalidades y la disponibilidad de recursos adicionales lo convierten en una opción ideal para aprender los conceptos básicos de programación de manera clara, efectiva y divertida.

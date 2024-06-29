@@ -175,7 +175,7 @@ h4 {
     box-sizing: border-box;
     color: #fff;
     font-size: 0.9rem;
-
+    margin: 1%;
     padding: 2%;
     border-radius: 0.2vw;
 }

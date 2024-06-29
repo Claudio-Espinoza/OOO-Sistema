@@ -6,7 +6,7 @@ import MarkdownSection from '../components/molecules/MarkdownSection.vue'
 <template>
     <SourceLayout>
         <article class="container-main">
-            <MarkdownSection markdownFilePath="/src/data/Pseint.md" />
+            <MarkdownSection markdownFilePath="/src/data/clases.md" />
         </article>
     </SourceLayout>
 </template>
@@ -14,7 +14,7 @@ import MarkdownSection from '../components/molecules/MarkdownSection.vue'
 <style scoped>
 .container-main {
     overflow-y: scroll;
-    width: 95%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: start;
