@@ -1,5 +1,6 @@
 import './assets/style/variables.css';
 import './assets/style/style.css';
+import './assets/style/markdown.css';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
