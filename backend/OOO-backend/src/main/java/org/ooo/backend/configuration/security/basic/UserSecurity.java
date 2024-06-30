@@ -1,4 +1,4 @@
-package org.ooo.backend.configuration.security;
+package org.ooo.backend.configuration.security.basic;
 
 import org.ooo.backend.model.Usuario;
 import org.slf4j.Logger;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UserSecurity implements UserDetails {
 
-    private final Usuario usuario;
+    private Usuario usuario;
 
     public UserSecurity(Usuario usuario) {
         this.usuario = usuario;
