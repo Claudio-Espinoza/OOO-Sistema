@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UserSecurity implements UserDetails {
 
-    private Usuario usuario;
+    private final Usuario usuario;
 
     public UserSecurity(Usuario usuario) {
         this.usuario = usuario;
@@ -32,11 +32,10 @@ public class UserSecurity implements UserDetails {
 
     @Override
     public String getPassword() {
-        try {
+        if (usuario != null) {
             return usuario.getPassword();
-        } catch (NullPointerException e) {
-            logger.error("Error al obtener la contraseña del usuario: ", e);
-            logger.info(e.getMessage());
+        } else {
+            logger.error("Usuario es null");
             return null;
         }
     }

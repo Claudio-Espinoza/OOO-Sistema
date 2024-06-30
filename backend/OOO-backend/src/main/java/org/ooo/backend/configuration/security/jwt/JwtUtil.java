@@ -12,7 +12,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -24,49 +23,57 @@ public class JwtUtil {
     @Value("${security.jwt.user.generator}")
     private String userGenerator;
 
+
     public String createToken(Authentication authentication) {
-        Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
-
-        String username = authentication.getPrincipal().toString();
-        String authorities = authentication.getAuthorities()
-                .stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.joining(","));
-
         return JWT.create()
                 .withIssuer(this.userGenerator)
-                .withSubject(username)
-                .withClaim("authorities", authorities)
+                .withSubject(getUsername(authentication))
+                .withClaim("authorities", getAuthorities(authentication))
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 1800000))
                 .withJWTId(UUID.randomUUID().toString())
                 .withNotBefore(new Date(System.currentTimeMillis()))
-                .sign(algorithm);
+                .sign(getAlgorithm());
     }
 
-     public DecodedJWT validateToken(String token) {
-        try {
-            Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
 
-            JWTVerifier verifier = JWT.require(algorithm)
+    private Algorithm getAlgorithm() {
+        return Algorithm.HMAC256(this.privateKey);
+    }
+
+
+    private String getUsername(Authentication authentication) {
+        return authentication.getPrincipal().toString();
+    }
+
+
+    private String getAuthorities(Authentication authentication) {
+        return authentication.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+    }
+
+
+    public DecodedJWT validateToken(String token) {
+        try {
+            JWTVerifier verifier = JWT.require(getAlgorithm())
                     .withIssuer(this.userGenerator)
                     .build();
 
             return verifier.verify(token);
         } catch (JWTVerificationException exception) {
-            throw new JWTVerificationException("Token invalid, not Authorized");
+            throw new JWTVerificationException("Token invalidown, No autorizado");
         }
     }
+
 
     public String extractUsername(DecodedJWT decodedJWT) {
         return decodedJWT.getSubject();
     }
 
+
     public Claim getSpecificClaim(DecodedJWT decodedJWT, String claimName) {
         return decodedJWT.getClaim(claimName);
-    }
-
-    public Map<String, Claim> getAllClaim(DecodedJWT decodedJWT) {
-        return decodedJWT.getClaims();
     }
 }

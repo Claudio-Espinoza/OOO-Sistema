@@ -30,6 +30,7 @@ public class UserSecurityService implements UserDetailsService {
     private final UsuarioRepository repository;
     private final PasswordEncoder passwordEncoder;
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return repository.findByNombre(username)
@@ -37,25 +38,31 @@ public class UserSecurityService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
     }
 
-    public AuthResponse createUser(AuthCreateUserRequest createRoleRequest) {
 
-        String username = createRoleRequest.username();
-        String password = createRoleRequest.password();
-        String rolesRequest = createRoleRequest.roleRequest();
-        String correo = createRoleRequest.email();
-
-        Usuario userEntity = Usuario.builder().nombre(username).email(correo).password(passwordEncoder.encode(password)).tipoUsuario(TipoUsuario.valueOf(rolesRequest.toUpperCase())).build();
-        Usuario userSaved = repository.save(userEntity);
-
-        ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userSaved, null, authorities);
-
+    public AuthResponse createUser(AuthCreateUserRequest userRequest) {
+        Usuario userSaved = repository.save(buildUser(userRequest));
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userSaved, null, getAuthorities(userRequest));
         String accessToken = jwtUtils.createToken(authentication);
 
-        return new AuthResponse(username, "User created successfully", accessToken, true);
+        return new AuthResponse(userRequest.username(), "Usuario creado de forma exitoso", accessToken, true);
     }
 
+
+    private List<SimpleGrantedAuthority> getAuthorities(AuthCreateUserRequest userRequest) {
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(userRequest.roleRequest().toUpperCase()));
+        return authorities;
+    }
+
+
+    private Usuario buildUser(AuthCreateUserRequest userRequest) {
+        return Usuario.builder()
+                .nombre(userRequest.username())
+                .email(userRequest.email())
+                .password(passwordEncoder.encode(userRequest.password()))
+                .tipoUsuario(TipoUsuario.valueOf(userRequest.roleRequest().toUpperCase()))
+                .build();
+    }
 
 
     public AuthResponse loginUser(AuthLoginRequest authLoginRequest) {
@@ -74,15 +81,24 @@ public class UserSecurityService implements UserDetailsService {
     public Authentication authenticate(String username, String password) {
         UserDetails userDetails = this.loadUserByUsername(username);
 
-        if (userDetails == null) {
-            throw new BadCredentialsException("Invalid username or password");
-        }
-
-        if (passwordEncoder.matches(password, userDetails.getPassword())) {
-            throw new BadCredentialsException("Incorrect Password");
-        }
+        validateUserDetails(userDetails);
+        validatePassword(userDetails, password);
 
         return new UsernamePasswordAuthenticationToken(username, password, userDetails.getAuthorities());
+    }
+
+
+    private void validateUserDetails(UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new IllegalArgumentException("Username and password are required");
+        }
+    }
+
+
+    private void validatePassword(UserDetails userDetails, String password) {
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+            throw new BadCredentialsException("Incorrect Password");
+        }
     }
 
 }
