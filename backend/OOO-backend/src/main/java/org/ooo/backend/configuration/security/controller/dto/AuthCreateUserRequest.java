@@ -1,2 +1,10 @@
-package org.ooo.backend.configuration.security.controller.dto;public record AuthCreateUserRequest() {
+package org.ooo.backend.configuration.security.controller.dto;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+
+public record AuthCreateUserRequest(@NotBlank String username,
+                                    @NotBlank String password,
+                                    String email,
+                                    @Valid String roleRequest) {
 }

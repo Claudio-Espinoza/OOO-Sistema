@@ -1,2 +1,11 @@
-package org.ooo.backend.configuration.security.controller.dto;public record AuthResponse() {
+package org.ooo.backend.configuration.security.controller.dto;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"username", "message", "status", "jwt"})
+public record AuthResponse(
+        String username,
+        String message,
+        String jwt,
+        Boolean status) {
 }
