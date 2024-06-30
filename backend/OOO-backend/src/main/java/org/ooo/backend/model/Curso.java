@@ -1,5 +1,6 @@
 package org.ooo.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class Curso {
     private Lenguaje lenguaje;
 
     @OneToMany(mappedBy = "curso")
+    @JsonIgnore
     private List<Leccion> lecciones;
 
 }

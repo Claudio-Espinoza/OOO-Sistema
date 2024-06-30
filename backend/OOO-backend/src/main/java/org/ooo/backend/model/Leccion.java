@@ -1,5 +1,6 @@
 package org.ooo.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +21,7 @@ public class Leccion {
 
     @ManyToOne
     @JoinColumn(name = "id_curso", nullable = false)
+    @JsonIgnore
     private Curso curso;
 
     @Column(nullable = false)
