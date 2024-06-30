@@ -1,9 +1,7 @@
 package org.ooo.backend.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.ooo.backend.model.utils.TipoUsuario;
 
 @Entity
@@ -11,6 +9,8 @@ import org.ooo.backend.model.utils.TipoUsuario;
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Usuario {
 
     @Id

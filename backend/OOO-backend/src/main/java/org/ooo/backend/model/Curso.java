@@ -1,7 +1,9 @@
 package org.ooo.backend.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.ooo.backend.model.utils.Lenguaje;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @Table(name = "cursos")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Curso {
 
     @Id

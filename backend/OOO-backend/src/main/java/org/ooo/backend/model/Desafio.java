@@ -1,13 +1,17 @@
 package org.ooo.backend.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "desfios")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Desafio {
 
     @Id
