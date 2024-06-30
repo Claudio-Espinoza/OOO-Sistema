@@ -36,4 +36,8 @@ public class Curso {
     @JsonIgnore
     private List<Leccion> lecciones;
 
+    @OneToMany(mappedBy = "curso")
+    @JsonIgnore
+    private List<Desafio> desafios;
+
 }

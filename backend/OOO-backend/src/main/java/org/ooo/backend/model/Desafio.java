@@ -1,5 +1,6 @@
 package org.ooo.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "desfios")
+@Table(name = "desafios")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class Desafio {
 
     @ManyToOne
     @JoinColumn(name = "id_curso", nullable = false)
+    @JsonIgnore
     private Curso curso;
 
     @Column(nullable = false)
