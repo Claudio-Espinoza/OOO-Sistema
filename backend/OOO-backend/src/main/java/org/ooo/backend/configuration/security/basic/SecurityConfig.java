@@ -1,6 +1,8 @@
 package org.ooo.backend.configuration.security;
 
 import lombok.RequiredArgsConstructor;
+import org.ooo.backend.configuration.security.jwt.JwtTokenValidator;
+import org.ooo.backend.configuration.security.jwt.JwtUtil;
 import org.ooo.backend.repository.UsuarioRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -23,6 +26,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final UsuarioRepository repository;
+    private final JwtUtil jwtUtils;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -53,6 +57,7 @@ public class SecurityConfig {
                         //Por ahora lo dejo asi por que no se cuales son los endpoint
                         http.anyRequest().permitAll()
                 )
+                .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
                 .build();
     }
 
