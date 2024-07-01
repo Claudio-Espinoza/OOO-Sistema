@@ -11,13 +11,12 @@ const courseService = new CourseService();
 
 let courses = ref<ICurso[] | null>(null);
 
-const changePage = (id: string): void => {
-    const ruta = `/roadmap/${id}`;
+const changePage = (id: number, type: string): void => {
+    const ruta = `/roadmap/${id}/${type}`;
     router.push(ruta);
 }
 
 onMounted(async () => {
-    console.log(`the component is now mounted.`);
     courses.value = await courseService.fetchAllCourse();
 });
 
@@ -27,7 +26,7 @@ onMounted(async () => {
     <MainLayout>
         <article class="container-main">
             <ButonCurse v-for="(item, index) in courses" :key="index" :content="item.nombre" :type="item.lenguaje"
-                @click="changePage(item.nombre)" />
+                @click="changePage(item.id, item.lenguaje.toLowerCase())" />
         </article>
     </MainLayout>
 </template>

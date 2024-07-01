@@ -14,6 +14,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
 const emit = defineEmits(['clicked']);
 
 const handleButtonClick = (title: string) => {
@@ -24,7 +25,7 @@ const handleButtonClick = (title: string) => {
 
 <template>
     <aside class="button">
-        <div :class="'button-position-' + props.type">
+        <div :class="'button-position-' + props.type.toLowerCase()">
             {{ props.position }}
         </div>
         <p class="button-title">

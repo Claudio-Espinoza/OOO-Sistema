@@ -1,37 +1,27 @@
 <script setup lang="ts">
 import MainLayout from '../layouts/MainLayout.vue';
 import ButonRoadMap from '../components/atoms/ButonRoadMap.vue';
+import { ref, Ref, onMounted } from 'vue';
+import CourseService from '@/service/CourseService.ts'
+import { ILeccion } from '@/model/Course';
 import { useRoute } from 'vue-router';
-import { ref, Ref } from 'vue';
 
-const route = useRoute();
-console.log(route);
+const router = useRoute()
+const id = router.params.id;
+const type = ref(router.params.type);
 
-let milestonesSelected: Ref<string> = ref('');
+let milestonesSelected: Ref<string | string[]> = ref('');
 
+let courses = ref<ILeccion[] | null>(null);
+const courseService = new CourseService();
+
+onMounted(async () => {
+    courses.value = await courseService.fetchLectionForCourse(id);
+});
 
 const handleButtonClick = (title: string) => {
     milestonesSelected.value = title;
 };
-
-const contents = [
-    { name: 'Variables' },
-    { name: 'Operaciones' },
-    { name: 'Estructura de control' },
-    { name: 'Analisis de problematica' },
-    { name: 'Analisis de problematica' },
-    { name: 'Analisis de problematica' },
-    { name: 'Analisis de problematica' }
-];
-
-const milestones = [
-    { name: "PSeint", type: 'java' },
-    { name: "Proyectos de java", type: 'java' },
-    { name: "Sintaxis", type: 'java' },
-    { name: "Estructura de datos", type: 'java' },
-    { name: "Clases", type: 'java' },
-    { name: "Objetos", type: 'java' },
-];
 
 </script>
 
@@ -43,27 +33,33 @@ const milestones = [
                     <strong class="roadmap-list-decoration"> Introducción a <br> programación</strong>
                 </h2>
                 <section class="roadmap-list--button">
-                    <ButonRoadMap v-for="(item, index) in milestones" :key="index" :title="item.name"
-                        :position="index + 1" :type="item.type" @clicked="handleButtonClick" />
+                    <ButonRoadMap v-for="(item, index) in courses" :key="index" :title="item.nombre"
+                        :position="index + 1" :type="Array.isArray(type) ? type[0] : type"
+                        @clicked="handleButtonClick" />
                 </section>
             </article>
 
             <article class="roadmap-description">
                 <aside class="description-content">
                     <h4>{{ milestonesSelected }}</h4>
-                    <div class="content-list">
-                        <p>Contenido: </p>
-                        <div class="content-list--buton">
-                            <button v-for="(item, index) in contents" :key="index">{{ item.name }}</button>
-
-                        </div>
-                    </div>
-                    <div class="content-description">
+                    <div v-if="milestonesSelected !== ''" class="content-description">
                         <p class="content-description--title">Descripcion del modulo: </p>
-                        <p class="content-description--description">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Labore esse debitis quia odit
-                            voluptates deserunt exercitationem saepe laboriosam quam voluptas, itaque facere velit
-                            sequi. Autem mollitia asperiores eveniet nulla aspernatur!</p>
+                        <p class="content-description--description">Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.
+                            Nullam ac erat ante. Ut vehicula semper nisl, quis ornare magna mollis et. Maecenas id felis
+                            eget sapien gravida dignissim. Nullam vitae orci neque. Fusce euismod nisi sit amet dolor
+                            suscipit, nec convallis nibh ultricies. Integer nec justo non justo cursus consectetur vel
+                            sed sapien. Ut dictum, urna sit amet bibendum viverra, arcu eros sollicitudin massa, et
+                            viverra purus quam ac nisi. Vivamus vehicula congue lacus, ut facilisis purus facilisis vel.
+                            Nulla facilisi. Sed ac dolor aliquam, finibus est in, efficitur ligula. Mauris sagittis
+                            ipsum nec cursus facilisis.
+                            <br>
+                            <br>
+                            Quisque ac nulla sed libero pharetra fringilla. Phasellus sed posuere eros. In congue dui
+                            sit amet lectus ultricies, at sagittis enim posuere. Aenean quis sapien ac felis ornare
+                            aliquam. Vivamus vitae risus eget lectus volutpat hendrerit. Maecenas id luctus magna. Nulla
+                            nec dapibus purus. Morbi tincidunt, libero ut commodo l
+                        </p>
                     </div>
 
 
@@ -130,7 +126,7 @@ const milestones = [
     width: 85%;
     height: 90%;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: start;
 
     border: var(--borde);
     border-radius: 0.5vw;
