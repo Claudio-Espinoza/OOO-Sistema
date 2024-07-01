@@ -50,9 +50,7 @@ const handleButtonClick = (title: string) => {
                             eget sapien gravida dignissim. Nullam vitae orci neque. Fusce euismod nisi sit amet dolor
                             suscipit, nec convallis nibh ultricies. Integer nec justo non justo cursus consectetur vel
                             sed sapien. Ut dictum, urna sit amet bibendum viverra, arcu eros sollicitudin massa, et
-                            viverra purus quam ac nisi. Vivamus vehicula congue lacus, ut facilisis purus facilisis vel.
-                            Nulla facilisi. Sed ac dolor aliquam, finibus est in, efficitur ligula. Mauris sagittis
-                            ipsum nec cursus facilisis.
+                            viverra purus quam ac nisi.
                             <br>
                             <br>
                             Quisque ac nulla sed libero pharetra fringilla. Phasellus sed posuere eros. In congue dui
@@ -126,7 +124,7 @@ const handleButtonClick = (title: string) => {
     width: 85%;
     height: 90%;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-around;
 
     border: var(--borde);
     border-radius: 0.5vw;
@@ -138,7 +136,9 @@ h4 {
     font-size: 1.7rem;
     font-weight: 500;
     text-align: center;
-    margin-bottom: 5%;
+
+    margin-top: 5%;
+    margin-bottom: 2%;
     height: 15%;
 
     display: flex;
