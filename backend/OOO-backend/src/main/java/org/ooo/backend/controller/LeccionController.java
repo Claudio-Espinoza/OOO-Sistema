@@ -2,10 +2,12 @@ package org.ooo.backend.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.ooo.backend.model.dto.LeccionDto;
 import org.ooo.backend.service.LeccionService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.NoSuchElementException;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,15 +16,33 @@ public class LeccionController {
 
     private final LeccionService leccionService;
 
-    @PostMapping("/{idLeccion}/reaccion")
-    public ResponseEntity<Void> actualizarPuntuacionLeccion(@PathVariable int idLeccion, @RequestParam boolean positiva){
+    @PostMapping
+    public ResponseEntity<?> añadirLeccion(@RequestBody LeccionDto leccionDto) {
         try {
-            leccionService.añadirPuntuacionLeccion(idLeccion,positiva);
-            return ResponseEntity.ok().build();
-        } catch (Exception e){
-            return ResponseEntity.badRequest().build();
+            leccionService.añadirLeccion(leccionDto);
+            return ResponseEntity.ok("Lección añadida exitosamente");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
+    @GetMapping("/curso/{idCurso}")
+    public ResponseEntity<?> obtenerLeccionesPorCurso(@PathVariable int idCurso) {
+        try {
+            return ResponseEntity.ok(leccionService.obtenerTodasLasLeccionesPorCurso(idCurso));
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PatchMapping("/{idLeccion}/puntuacion")
+    public ResponseEntity<?> actualizarPuntuacionLeccion(@PathVariable int idLeccion, @RequestParam boolean positiva) {
+        try {
+            leccionService.añadirPuntuacionLeccion(idLeccion, positiva);
+            return ResponseEntity.ok("Puntuación actualizada correctamente");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

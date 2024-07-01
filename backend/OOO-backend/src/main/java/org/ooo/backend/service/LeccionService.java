@@ -2,7 +2,11 @@ package org.ooo.backend.service;
 
 import lombok.RequiredArgsConstructor;
 import org.ooo.backend.model.Leccion;
+import org.ooo.backend.model.dto.LeccionDto;
+import org.ooo.backend.repository.ContenidoLeccionRepository;
+import org.ooo.backend.repository.CursoRepository;
 import org.ooo.backend.repository.LeccionRepository;
+import org.ooo.backend.service.mapper.LeccionMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +17,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class LeccionService {
 
+    private final ContenidoLeccionRepository contenidoLeccionRepository;
     private final LeccionRepository leccionRepository;
+    private final CursoRepository cursoRepository;
 
-    public List<Leccion> obtenerTodasLasLeccionesByCurso(int idCurso){
+    public List<Leccion> obtenerTodasLasLeccionesPorCurso(int idCurso){
 
         List<Leccion> lecciones = leccionRepository.findAllByCursoId(idCurso);
 
@@ -25,7 +31,6 @@ public class LeccionService {
             throw new NoSuchElementException("No se encontraron lecciones");
         }
     }
-
 
     public void añadirPuntuacionLeccion(int idLeccion, boolean positiva){
 
@@ -45,8 +50,15 @@ public class LeccionService {
         } else {
             throw new NoSuchElementException("No se encontro la leccion");
         }
+    }
 
+    public void añadirLeccion(LeccionDto leccionDto){
+        Leccion leccion = LeccionMapper.toLeccion(leccionDto);
 
+        leccion.setCurso(cursoRepository.findById(leccionDto.getIdCurso())
+                .orElseThrow(() -> new NoSuchElementException("Curso no encontrado con ID: " + leccionDto.getIdCurso())));
+
+        leccionRepository.save(leccion);
     }
 
 }
