@@ -26,6 +26,19 @@ public class DesafioService {
     private final String pathFolderPDF = "desafios/";
 
 
+
+    public List<Desafio> obtenerTodosLosDesafios(){
+
+        List<Desafio> desafios = desafioRespository.findAll();
+
+        if (!desafios.isEmpty()) {
+            return desafios;
+        } else {
+            throw new NoSuchElementException("No se encontraron desafios");
+        }
+
+    }
+
     public List<Desafio> obtenerTodosLosDesafioPorCurso(int idCurso) {
 
         List<Desafio> desafios = desafioRespository.findAllByCursoId(idCurso);
