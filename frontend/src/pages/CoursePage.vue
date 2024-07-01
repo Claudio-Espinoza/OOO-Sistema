@@ -2,26 +2,32 @@
 import MainLayout from '../layouts/MainLayout.vue';
 import ButonCurse from '../components/atoms/ButonCurse.vue';
 import { useRouter } from 'vue-router';
+import { onMounted, ref } from 'vue';
+import CourseService from '@/service/CourseService.ts'
+import { ICurso } from '@/model/Course';
 
 const router = useRouter();
+const courseService = new CourseService();
+
+let courses = ref<ICurso[] | null>(null);
 
 const changePage = (id: string): void => {
     const ruta = `/roadmap/${id}`;
     router.push(ruta);
 }
 
+onMounted(async () => {
+    console.log(`the component is now mounted.`);
+    courses.value = await courseService.fetchAllCourse();
+});
+
 </script>
 
 <template>
     <MainLayout>
         <article class="container-main">
-            <ButonCurse type="java" content="Introducción a Programación"
-                @click="changePage('Introducción a Programación')" />
-
-            <ButonCurse type="java" content="Programación Orientada a Objeto"
-                @click="changePage('Programación Orientada a Objeto')" />
-
-            <ButonCurse type="python" content="Taller de Programación" @click="changePage('Taller de Programación')" />
+            <ButonCurse v-for="(item, index) in courses" :key="index" :content="item.nombre" :type="item.lenguaje"
+                @click="changePage(item.nombre)" />
         </article>
     </MainLayout>
 </template>

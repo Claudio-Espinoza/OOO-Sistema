@@ -5,8 +5,8 @@ const props = defineProps<ButonCurseProps>();
 </script>
 
 <template>
-    <button :class="'button-' + props.type">
-        <img :src="'/src/assets/icon/' + props.type + '.png'" alt="">
+    <button :class="'button-' + props.type.toLowerCase()">
+        <img :src="'/src/assets/icon/' + props.type.toLowerCase() + '.png'" alt="">
         {{ props.content }}
     </button>
 </template>
