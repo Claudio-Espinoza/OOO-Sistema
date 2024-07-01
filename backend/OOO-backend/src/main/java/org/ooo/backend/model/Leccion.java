@@ -37,6 +37,7 @@ public class Leccion {
     private double puntuacionNegativa;
 
     @OneToOne(mappedBy = "leccion", cascade = CascadeType.ALL)
+    @JsonIgnore
     private ContenidoLeccion contenidoLeccion;
 
 }
