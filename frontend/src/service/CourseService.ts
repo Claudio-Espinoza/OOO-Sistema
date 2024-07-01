@@ -1,14 +1,9 @@
 import axios from 'axios';
 import { Ref, ref } from 'vue';
-import { ICurso } from '@/model/Course.ts';
+import { ICurso, ILeccion } from '@/model/Course.ts';
 
 class RankingService {
   private API_URL = 'http://localhost:8080';
-  private courseData: Ref<Array<ICurso>>;
-
-  constructor() {
-    this.courseData = ref<Array<ICurso>>([]);
-  }
 
   async fetchAllCourse(): Promise<Array<ICurso> | null> {
     try {
@@ -16,7 +11,25 @@ class RankingService {
       const course: Array<ICurso> | undefined = response.data;
 
       if (course && course.length > 0) {
-        this.courseData.value = course;
+        return course;
+      } else {
+        console.log('No se encontraron niveles');
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  async fetchLectionForCourse(
+    id: string | string[]
+  ): Promise<Array<ILeccion> | null> {
+    try {
+      const response = await axios.get(`${this.API_URL}/leccion/curso/${id}`);
+      const course: Array<ILeccion> | undefined = response.data;
+
+      if (course && course.length > 0) {
         return course;
       } else {
         console.log('No se encontraron niveles');

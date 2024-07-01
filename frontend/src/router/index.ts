@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../pages/CoursePage.vue'),
   },
   {
-    path: '/roadmap/:id',
+    path: '/roadmap/:id/:type',
     name: 'roadmap',
     component: () => import('../pages/RoadMapPage.vue'),
   },
