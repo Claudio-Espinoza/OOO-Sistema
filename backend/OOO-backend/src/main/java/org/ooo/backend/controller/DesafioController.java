@@ -5,7 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.ooo.backend.model.Desafio;
 import org.ooo.backend.model.dto.DesafioDto;
 import org.ooo.backend.service.DesafioService;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,7 +31,6 @@ public class DesafioController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
     }
-
 
     @GetMapping("/curso/{idCurso}")
     public ResponseEntity<List<Desafio>> obtenerDesafiosPorCurso(@PathVariable int idCurso) {
@@ -57,6 +58,18 @@ public class DesafioController {
             return ResponseEntity.ok("Puntuación actualizada correctamente.");
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Desafio no encontrado", e);
+        }
+    }
+
+    @GetMapping("/descargar-pdf/{idDesafio}")
+    public ResponseEntity<Resource> descargarPDF(@PathVariable int idDesafio) {
+        try {
+            Resource fileResource = desafioService.cargarPdfComoRecurso(idDesafio);
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .body(fileResource);
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
     }
 }

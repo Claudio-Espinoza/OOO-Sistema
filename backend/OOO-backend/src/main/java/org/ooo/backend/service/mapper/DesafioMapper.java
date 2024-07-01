@@ -21,12 +21,12 @@ public class DesafioMapper {
     public static DesafioDto fromDesafio(Desafio desafio){
         DesafioDto desafioDto = new DesafioDto();
 
+        desafioDto.setIdDesafio(desafio.getId());
         desafioDto.setIdCurso(desafio.getCurso().getId());
         desafioDto.setAutor(desafio.getAutor());
         desafioDto.setNombre(desafio.getNombre());
         desafioDto.setPuntuacionPositiva(desafio.getPuntuacionPositiva());
         desafioDto.setPuntuacionNegativa(desafio.getPuntuacionNegativa());
-        desafioDto.setDireccionPdfContenido(desafio.getDireccionPdfContenido());
 
         return desafioDto;
     }

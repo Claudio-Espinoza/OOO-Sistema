@@ -13,4 +13,5 @@ public class DesafioDto {
     private double puntuacionPositiva;
     private double puntuacionNegativa;
     private int idCurso;
+    private int idDesafio;
 }

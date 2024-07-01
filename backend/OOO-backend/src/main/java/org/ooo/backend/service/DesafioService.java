@@ -7,6 +7,8 @@ import org.ooo.backend.repository.CursoRepository;
 import org.ooo.backend.repository.DesafioRespository;
 import org.ooo.backend.service.mapper.DesafioMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -91,10 +93,23 @@ public class DesafioService {
         }catch (Exception e){
             throw new RuntimeException("Ha ocurrido un error al guardar el PDF");
         }
-
-
     }
+    public Resource cargarPdfComoRecurso(int idDesafio) {
+        Desafio desafio = desafioRespository.findById(idDesafio)
+                .orElseThrow(() -> new NoSuchElementException("Desafío no encontrado con ID: " + idDesafio));
 
+        try {
+            Path filePath = Paths.get(pathFolderPDF).resolve(desafio.getDireccionPdfContenido()).normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+            if(resource.exists() || resource.isReadable()) {
+                return resource;
+            } else {
+                throw new RuntimeException("El archivo no se pudo leer");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error al cargar el archivo", e);
+        }
+    }
 
 
 
