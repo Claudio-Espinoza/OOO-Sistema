@@ -40,3 +40,13 @@ export interface ButonFilterProps {
   content: string;
   state: boolean;
 }
+
+export interface IChallenger {
+  id: number;
+  nombre: string;
+  autor: string;
+  puntuacion_positiva: number;
+  puntuacion_negativa: number;
+  id_curso: number;
+  direccion_pdf_contenido: string;
+}

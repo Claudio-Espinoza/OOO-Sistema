@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Ref, ref } from 'vue';
 import { ICurso, ILeccion } from '@/model/Course.ts';
 
 class RankingService {
