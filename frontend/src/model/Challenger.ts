@@ -12,6 +12,7 @@ export interface CardDescription {
 
 // CardInformationProps ArticleInformationProps
 export interface ArticleInformationProps {
+  id: number;
   title?: string;
   subTitle?: string;
   autor?: string;
@@ -24,6 +25,7 @@ export interface ArticleInformationProps {
 
 // ArticleSection.vue
 export interface ArticleSectionProps {
+  id: number;
   title: string;
   subTitle: string;
   autor: string;
