@@ -4,9 +4,9 @@ import axios from 'axios';
 class RankingService {
   private API_URL = 'http://localhost:8080';
 
-  async fetchAllCourse(): Promise<Array<IChallenger> | null> {
+  async fetchAllChallenger(): Promise<Array<IChallenger> | null> {
     try {
-      const response = await axios.get(`${this.API_URL}/curso/temas`);
+      const response = await axios.get(`${this.API_URL}/desafio/todos`);
       const course: Array<IChallenger> | undefined = response.data;
 
       if (course && course.length > 0) {

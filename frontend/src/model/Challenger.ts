@@ -1,27 +1,37 @@
 // CardDescription
 export interface CardDescription {
-  title: string;
-  course: string;
+  title?: string;
+  subTitle?: string;
+  autor?: string;
   type: string;
+  description: string;
+  negativePoint: number;
+  positivePoint: number;
+  direccion_pdf_contenido: string;
 }
 
-// CardInformationProps
+// CardInformationProps ArticleInformationProps
 export interface ArticleInformationProps {
-  title: string;
-  subTitle: string;
-  review: string;
-  autor: string;
+  title?: string;
+  subTitle?: string;
+  autor?: string;
   type: string;
+  description: string;
+  negativePoint: number;
+  positivePoint: number;
+  direccion_pdf_contenido: string;
 }
 
 // ArticleSection.vue
 export interface ArticleSectionProps {
   title: string;
   subTitle: string;
-  review: string;
   autor: string;
   type: string;
   description: string;
+  negativePoint: number;
+  positivePoint: number;
+  direccion_pdf_contenido: string;
 }
 
 // SectionDescription
@@ -43,10 +53,13 @@ export interface ButonFilterProps {
 
 export interface IChallenger {
   id: number;
+  type: string;
+  nombreCurso: string;
   nombre: string;
   autor: string;
   puntuacion_positiva: number;
   puntuacion_negativa: number;
   id_curso: number;
   direccion_pdf_contenido: string;
+  descripcion: string;
 }
