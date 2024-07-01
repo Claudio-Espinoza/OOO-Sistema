@@ -36,7 +36,6 @@ public class DesafioService {
         } else {
             throw new NoSuchElementException("No se encontraron desafios");
         }
-
     }
 
     public List<Desafio> obtenerTodosLosDesafioPorCurso(int idCurso) {
