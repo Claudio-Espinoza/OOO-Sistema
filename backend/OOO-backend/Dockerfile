@@ -22,5 +22,8 @@ WORKDIR /app
 # Copiamos el archivo JAR construido en el build
 COPY --from=build /app/target/OOO-backend-0.0.1-SNAPSHOT.jar /app/OOO-backend.jar
 
+# Copiamos los archivos pdf en desafios
+COPY desafios /app/desafios
+
 # Comando para ejecutar la aplicación
 CMD ["java", "-jar", "/app/OOO-backend.jar"]
