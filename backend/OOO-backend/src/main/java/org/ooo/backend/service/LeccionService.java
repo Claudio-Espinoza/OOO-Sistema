@@ -3,7 +3,6 @@ package org.ooo.backend.service;
 import lombok.RequiredArgsConstructor;
 import org.ooo.backend.model.Leccion;
 import org.ooo.backend.model.dto.LeccionDto;
-import org.ooo.backend.repository.ContenidoLeccionRepository;
 import org.ooo.backend.repository.CursoRepository;
 import org.ooo.backend.repository.LeccionRepository;
 import org.ooo.backend.service.mapper.LeccionMapper;
@@ -17,42 +16,37 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class LeccionService {
 
-    private final ContenidoLeccionRepository contenidoLeccionRepository;
     private final LeccionRepository leccionRepository;
     private final CursoRepository cursoRepository;
 
-    public List<Leccion> obtenerTodasLasLeccionesPorCurso(int idCurso){
+    public List<Leccion> obtenerTodasLasLeccionesPorCurso(int idCurso) {
 
         List<Leccion> lecciones = leccionRepository.findAllByCursoId(idCurso);
 
-        if(!lecciones.isEmpty()){
+        if (!lecciones.isEmpty()) {
             return lecciones;
         } else {
             throw new NoSuchElementException("No se encontraron lecciones");
         }
     }
 
-    public void añadirPuntuacionLeccion(int idLeccion, boolean positiva){
-
+    public void agregaPuntuacionLeccion(int idLeccion, boolean positiva) {
         Optional<Leccion> leccion = leccionRepository.findById(idLeccion);
 
-        if(leccion.isPresent() ){
-
+        if (leccion.isPresent()) {
             Leccion leccionTemporal = leccion.get();
-
-            if (positiva){
+            if (positiva) {
                 leccionTemporal.setPuntuacionPositiva(leccionTemporal.getPuntuacionPositiva() + 1);
-            }else {
+            } else {
                 leccionTemporal.setPuntuacionNegativa(leccionTemporal.getPuntuacionNegativa() + 1);
             }
-
             leccionRepository.save(leccionTemporal);
         } else {
             throw new NoSuchElementException("No se encontro la leccion");
         }
     }
 
-    public void añadirLeccion(LeccionDto leccionDto){
+    public void agregaLeccion(LeccionDto leccionDto) {
         Leccion leccion = LeccionMapper.toLeccion(leccionDto);
 
         leccion.setCurso(cursoRepository.findById(leccionDto.getIdCurso())

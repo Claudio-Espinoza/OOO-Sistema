@@ -54,7 +54,7 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-                    // EndPoints publicos
+
                     http.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
                     //Aun no se me ocurren los endpoint
                     http.anyRequest().permitAll();

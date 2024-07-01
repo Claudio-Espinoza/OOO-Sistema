@@ -2,11 +2,13 @@ package org.ooo.backend.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.ooo.backend.model.Leccion;
 import org.ooo.backend.model.dto.LeccionDto;
 import org.ooo.backend.service.LeccionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -16,30 +18,31 @@ public class LeccionController {
 
     private final LeccionService leccionService;
 
-    @PostMapping
-    public ResponseEntity<?> añadirLeccion(@RequestBody LeccionDto leccionDto) {
+    @PostMapping("/agregar-leccion")
+    public ResponseEntity<Void> agregaLeccion(@RequestBody LeccionDto leccionDto) {
         try {
-            leccionService.añadirLeccion(leccionDto);
-            return ResponseEntity.ok("Lección añadida exitosamente");
+            leccionService.agregaLeccion(leccionDto);
+            return ResponseEntity.ok().build();
         } catch (NoSuchElementException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().build();
         }
     }
 
     @GetMapping("/curso/{idCurso}")
-    public ResponseEntity<?> obtenerLeccionesPorCurso(@PathVariable int idCurso) {
+    protected ResponseEntity<List<Leccion>> obtenerLeccionesPorCurso(@PathVariable int idCurso) {
         try {
-            return ResponseEntity.ok(leccionService.obtenerTodasLasLeccionesPorCurso(idCurso));
+            List<Leccion> leccionList = leccionService.obtenerTodasLasLeccionesPorCurso(idCurso);
+            return ResponseEntity.ok(leccionList);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PatchMapping("/{idLeccion}/puntuacion")
-    public ResponseEntity<?> actualizarPuntuacionLeccion(@PathVariable int idLeccion, @RequestParam boolean positiva) {
+    public ResponseEntity<Void> actualizarPuntuacionLeccion(@PathVariable int idLeccion, @RequestParam boolean positiva) {
         try {
-            leccionService.añadirPuntuacionLeccion(idLeccion, positiva);
-            return ResponseEntity.ok("Puntuación actualizada correctamente");
+            leccionService.agregaPuntuacionLeccion(idLeccion, positiva);
+            return ResponseEntity.ok().build();
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
         }
