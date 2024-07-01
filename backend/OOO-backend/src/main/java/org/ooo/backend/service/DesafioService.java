@@ -96,7 +96,7 @@ public class DesafioService {
     }
     public Resource cargarPdfComoRecurso(int idDesafio) {
         Desafio desafio = desafioRespository.findById(idDesafio)
-                .orElseThrow(() -> new NoSuchElementException("Desafío no encontrado con ID: " + idDesafio));
+                .orElseThrow(() -> new NoSuchElementException("Desafio no encontrado con ID: " + idDesafio));
 
         try {
             Path filePath = Paths.get(pathFolderPDF).resolve(desafio.getDireccionPdfContenido()).normalize();
@@ -111,6 +111,14 @@ public class DesafioService {
         }
     }
 
+    public void eliminarDesafio(int idDesafio){
+
+        if(desafioRespository.existsById(idDesafio)){
+            desafioRespository.deleteById(idDesafio);
+        } else {
+            throw new NoSuchElementException("No se encontró el desafio con ID: " + idDesafio);
+        }
+    }
 
 
 }

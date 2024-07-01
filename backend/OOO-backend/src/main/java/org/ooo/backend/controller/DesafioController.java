@@ -72,4 +72,15 @@ public class DesafioController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
         }
     }
+
+    @DeleteMapping("/{idDesafio}")
+    public ResponseEntity<Void> eliminarDesafio(@PathVariable int idDesafio) {
+        try {
+            desafioService.eliminarDesafio(idDesafio);
+            return ResponseEntity.noContent().build();
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
+        }
+    }
+
 }
