@@ -1,7 +1,36 @@
 <script setup lang="ts">
+import axios from 'axios';
 import { ArticleInformationProps } from '@/model/Challenger.ts';
+import { ref } from 'vue'
 
 const props = defineProps<ArticleInformationProps>();
+
+const idDesafio = ref(props.id);
+
+const handleDownload = async () => {
+    try {
+        const response = await axios.get(
+            `http://localhost:8080/desafio/descargar-pdf/${idDesafio.value}`,
+            {
+                responseType: 'blob',
+            }
+        );
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `desafio-${idDesafio.value}.pdf`);
+        document.body.appendChild(link);
+        link.click();
+
+        if (link.parentNode) {
+            link.parentNode.removeChild(link);
+        }
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Hubo un error al descargar el PDF:', error);
+    }
+};
+
 </script>
 
 <template>
@@ -26,7 +55,7 @@ const props = defineProps<ArticleInformationProps>();
             <small><strong>Autor: </strong> {{ props.autor }}</small>
         </div>
 
-        <button class="information-buton">Descargar desafio (.pdf)</button>
+        <button class="information-buton" @click="handleDownload">Descargar desafio (.pdf)</button>
     </section>
 </template>
 

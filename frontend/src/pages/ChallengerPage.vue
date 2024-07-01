@@ -18,13 +18,11 @@ let challengers = ref<IChallenger[] | null>(null);
 
 onMounted(async () => {
     challengers.value = await courseService.fetchAllChallenger();
-    console.log(challengers);
 });
 
 let cardDescription = ref<IChallenger | null>(null);
 
 function handleCardClick(cardAttributes: IChallenger) {
-    console.log('Card clicked:', cardAttributes);
     cardDescription.value = cardAttributes;
 }
 </script>
@@ -32,9 +30,9 @@ function handleCardClick(cardAttributes: IChallenger) {
 <template>
     <MainLayout>
         <article class="container-main">
-            <ArticleSection :title="cardDescription?.nombre || ''" :sub-title="cardDescription?.nombreCurso || ''"
-                :autor="cardDescription?.autor || ''" :type="cardDescription?.type || ''"
-                :description="cardDescription?.descripcion || ''"
+            <ArticleSection :id="cardDescription?.id || 3" :title="cardDescription?.nombre || ''"
+                :sub-title="cardDescription?.nombreCurso || ''" :autor="cardDescription?.autor || ''"
+                :type="cardDescription?.type || ''" :description="cardDescription?.descripcion || ''"
                 :negative-point="cardDescription?.puntuacion_negativa ?? 2"
                 :positive-point="cardDescription?.puntuacion_positiva ?? 4"
                 :direccion_pdf_contenido="cardDescription?.direccion_pdf_contenido ?? 'Desafío de la semana - 7 de Mayo.pdf'" />

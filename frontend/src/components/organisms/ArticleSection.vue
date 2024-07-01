@@ -8,7 +8,7 @@ const props = defineProps<ArticleSectionProps>();
 
 <template>
     <article class="container-article">
-        <ArticleInformation :autor="props.autor" :negative-point="props.negativePoint"
+        <ArticleInformation :id="props.id" :autor="props.autor" :negative-point="props.negativePoint"
             :positive-point="props.positivePoint" :type="props.type" :sub-title="props.subTitle" :title="props.title"
             :description="props.description" :direccion_pdf_contenido="props.direccion_pdf_contenido" />
 

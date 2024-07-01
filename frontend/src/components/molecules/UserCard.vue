@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function changeView() {
+    router.push("/sesion")
+}
+
 </script>
 
 <template>
     <header class="card-container">
         <div class="card-text">
             <p class="card-text--user">Desconocido</p>
-            <small class="card-text--logger">Iniciar sesion</small>
+            <small class="card-text--logger" @click="changeView()">Iniciar sesion</small>
         </div>
         <img class="img" src="/src/assets/icon/user.png" alt="">
     </header>

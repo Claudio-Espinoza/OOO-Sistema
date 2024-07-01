@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import FormLogin from '@/components/molecules/FormLogin.vue';
+import FormRegister from '@/components/molecules/FormRegister.vue';
 
 let habilitador = ref(true)
 let statusOne = ref('active')
@@ -33,12 +35,31 @@ function activarButon() {
             <button :class="'logger-button-' + statusTwo" @click="activarButon()">Registrar Sesión</button>
         </nav>
 
+        <section class="form" v-if="statusOne === 'active'">
+            <FormLogin />
+        </section>
 
-
+        <section class="form" v-if="statusTwo === 'active'">
+            <FormRegister />
+        </section>
     </main>
 </template>
 
 <style scoped>
+.form {
+    width: 30%;
+    height: 70%;
+    border: var(--borde);
+    border-radius: 0.7vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+
 .container-logger {
     width: 100%;
     height: 100vh;
@@ -51,11 +72,11 @@ function activarButon() {
 
 .logger-button-false {
     background: none;
-    border: 0.4vh solid var(--background-color);
+    border: var(--borde);
     border-radius: 0.7vw;
     font-size: 1.2vw;
     font-weight: 300;
-    color: var(--color-verde);
+    color: var(--font-color);
     width: 40%;
     height: 8vh;
 }
@@ -69,11 +90,11 @@ function activarButon() {
 }
 
 .logger-button-active {
-    background: var(--color-verde);
-    border: 0.4vh solid var(--color-verde);
+    background: var(--color-morado);
+    border: 0.4vh solid var(--borde);
     border-radius: 0.7vw;
 
-    color: var(--color-background);
+    color: #fff;
     font-size: 1.2vw;
     font-weight: 600;
     width: 40%;
