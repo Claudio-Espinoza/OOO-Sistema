@@ -27,6 +27,15 @@ public class Desafio {
     @Column(nullable = false)
     private String nombre;
 
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "descripcion", columnDefinition = "TEXT")
+    private String descripcion;
+
+    @Column(name = "curso")
+    private String nombreCurso;
+
     @Column(nullable = false)
     private String autor;
 
