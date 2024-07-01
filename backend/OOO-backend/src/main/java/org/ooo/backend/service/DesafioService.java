@@ -6,6 +6,7 @@ import org.ooo.backend.model.dto.DesafioDto;
 import org.ooo.backend.repository.CursoRepository;
 import org.ooo.backend.repository.DesafioRespository;
 import org.ooo.backend.service.mapper.DesafioMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,9 +24,9 @@ public class DesafioService {
     private final DesafioRespository desafioRespository;
     private final CursoRepository cursoRepository;
 
-    private final String pathFolderPDF = "desafios/";
 
-
+    @Value("${pdf.storage.path}")
+    private String pathFolderPDF;
 
     public List<Desafio> obtenerTodosLosDesafios(){
 
