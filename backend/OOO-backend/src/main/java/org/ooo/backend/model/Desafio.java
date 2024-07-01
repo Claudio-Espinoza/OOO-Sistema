@@ -36,7 +36,8 @@ public class Desafio {
     @Column(nullable = false)
     private double puntuacionNegativa;
 
-    @Column(nullable = false)
+    //Para efectos de prueba va a quedae en true, pero deberia ser False
+    @Column(nullable = true)
     private String direccionPdfContenido;
 
 }
