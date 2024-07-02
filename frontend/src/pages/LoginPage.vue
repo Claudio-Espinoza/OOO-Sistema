@@ -47,8 +47,6 @@ function activarButon() {
 
 <style scoped>
 .form {
-    width: 30%;
-    height: 70%;
     border: var(--borde);
     border-radius: 0.7vw;
 
@@ -57,8 +55,6 @@ function activarButon() {
     justify-content: center;
     flex-direction: column;
 }
-
-
 
 .container-logger {
     width: 100%;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ICurso, ILeccion } from '@/model/Course.ts';
 
-class RankingService {
+class CourseService {
   private API_URL = 'http://localhost:8080';
 
   async fetchAllCourse(): Promise<Array<ICurso> | null> {
@@ -41,4 +41,4 @@ class RankingService {
   }
 }
 
-export default RankingService;
+export default CourseService;
