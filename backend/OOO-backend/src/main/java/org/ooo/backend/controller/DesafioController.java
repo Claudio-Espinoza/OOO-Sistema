@@ -23,7 +23,7 @@ public class DesafioController {
 
     private final DesafioService desafioService;
 
-    @GetMapping()
+    @GetMapping("/todos")
     public ResponseEntity<List<Desafio>> obtenerTodosLosDesafios(){
         try {
             return ResponseEntity.ok(desafioService.obtenerTodosLosDesafios());

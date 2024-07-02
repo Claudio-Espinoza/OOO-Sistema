@@ -1,18 +1,45 @@
 <script setup lang="ts">
-import { ArticleInformationProps } from '@/model/Challenger.ts'
+import axios from 'axios';
+import { ArticleInformationProps } from '@/model/Challenger.ts';
+import { ref } from 'vue'
 
 const props = defineProps<ArticleInformationProps>();
+
+const idDesafio = ref(props.id);
+
+const handleDownload = async () => {
+    try {
+        const response = await axios.get(
+            `http://localhost:8080/desafio/descargar-pdf/${idDesafio.value}`,
+            {
+                responseType: 'blob',
+            }
+        );
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `desafio-${idDesafio.value}.pdf`);
+        document.body.appendChild(link);
+        link.click();
+
+        if (link.parentNode) {
+            link.parentNode.removeChild(link);
+        }
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Hubo un error al descargar el PDF:', error);
+    }
+};
 
 </script>
 
 <template>
-    <section class="container-section">
-
+    <section class="container-section" v-if="props.title !== ''">
         <div class="title-img-java" v-if="props.type === 'java'">
-            <img v-if="props.type === 'java'" src="/src/assets/icon/java-blanco.png" alt="">
+            <img v-if="props.type === 'java'" src="/src/assets/icon/java-blanco.png" alt="" />
         </div>
         <div class="title-img-python" v-if="props.type === 'python'">
-            <img v-if="props.type === 'python'" src="/src/assets/icon/python-blanco.png" alt="">
+            <img v-if="props.type === 'python'" src="/src/assets/icon/python-blanco.png" alt="" />
         </div>
 
         <div class="information-title">
@@ -21,15 +48,15 @@ const props = defineProps<ArticleInformationProps>();
         </div>
 
         <div class="information-review">
-            <small><strong>Valoración: </strong> {{ props.review }} / 5</small>
+            <small><strong>Valoraciones negativas: </strong>
+                {{ props.negativePoint }}</small>
+            <small><strong>Valoraciones positivas:: </strong>
+                {{ props.positivePoint }}</small>
             <small><strong>Autor: </strong> {{ props.autor }}</small>
         </div>
 
-        <button class="information-buton">Descargar desafio (.pdf)</button>
-
-
+        <button class="information-buton" @click="handleDownload">Descargar desafio (.pdf)</button>
     </section>
-
 </template>
 
 <style scoped>
@@ -40,15 +67,14 @@ const props = defineProps<ArticleInformationProps>();
 
 .container-section {
     width: 100%;
-    height: 100%;
+    height: 60%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
+    padding: 5%;
     box-sizing: border-box;
-
 }
 
 .title-img-java,
@@ -63,7 +89,6 @@ const props = defineProps<ArticleInformationProps>();
 
 .title-img-java {
     background-color: var(--color-naranja);
-
 }
 
 .title-img-python {
@@ -82,12 +107,11 @@ img {
 }
 
 .information-review {
-    width: 60%;
+    width: 80%;
     display: flex;
     align-items: start;
     flex-direction: column;
 }
-
 
 strong {
     font-weight: 500;
@@ -101,7 +125,7 @@ strong {
     border: 0.4vh solid var(--color-morado);
     color: var(--color-morado);
     border-radius: 0.8vw;
-    width: 60%;
+    width: 100%;
     height: 10%;
     font-weight: 500;
     cursor: pointer;
@@ -117,6 +141,5 @@ strong {
     color: #fff;
     background-color: var(--color-morado);
     cursor: pointer;
-
 }
 </style>

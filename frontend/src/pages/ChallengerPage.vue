@@ -2,53 +2,40 @@
 import MainLayout from '../layouts/MainLayout.vue';
 import ArticleSection from '../components/organisms/ArticleSection.vue';
 import ButonFilter from '../components/atoms/ButonFilter.vue';
-import ChallengerCard from '../components/atoms/ChallengerCard.vue'
-import { CardDescription } from '@/model/Challenger.ts';
-import { ref } from 'vue';
+import ChallengerCard from '../components/atoms/ChallengerCard.vue';
+import { onMounted, ref } from 'vue';
+import ChallengerService from '@/service/ChallengerService.ts';
+import { IChallenger } from '@/model/Challenger.ts';
 
-let activeButton = ref('Introducción a Programación');
+let activeButton = ref('Introducción a programación');
 
 const setActiveButton = (newActiveButton: string) => {
     activeButton.value = newActiveButton;
 };
 
+const courseService = new ChallengerService();
+let challengers = ref<IChallenger[] | null>(null);
 
-const challengerCards = [
-    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 1" },
-    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 2" },
-    { course: "Programación Orientada a Objetos", type: "java", title: "Manejo de arreglos 3" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 4" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 5" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 6" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 7" },
-    { course: "Programación Orientada a Objetos", type: "java", title: "Manejo de arreglos 1" },
-    { course: "Programación Orientada a Objetos", type: "java", title: "Manejo de arreglos 2" },
-    { course: "Programación Orientada a Objetos", type: "java", title: "Manejo de arreglos 3" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 4" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 5" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 6" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 7" },
-    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 1" },
-    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 2" },
-    { course: "Introducción a Programación", type: "java", title: "Manejo de arreglos 3" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 4" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 5" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 6" },
-    { course: "Taller de Programación", type: "python", title: "Manejo de arreglos 7" }
-];
+onMounted(async () => {
+    challengers.value = await courseService.fetchAllChallenger();
+});
 
-function handleCardClick(cardAttributes: CardDescription) {
-    console.log('Card clicked:', cardAttributes);
+let cardDescription = ref<IChallenger | null>(null);
+
+function handleCardClick(cardAttributes: IChallenger) {
+    cardDescription.value = cardAttributes;
 }
-
 </script>
 
 <template>
     <MainLayout>
         <article class="container-main">
-            <ArticleSection title="Manejo de arreglos" sub-title="Introducción a la programación" view="1.000"
-                review="4.5" autor="Nombre autor" type="java"
-                description="Aqui va la descripcion por lo que pondre un texto de prueba. Aqui va la descripcion por lo que pondre un texto de prueba. Aqui va la descripcion por lo que pondre un texto de prueba" />
+            <ArticleSection :id="cardDescription?.id || 3" :title="cardDescription?.nombre || ''"
+                :sub-title="cardDescription?.nombreCurso || ''" :autor="cardDescription?.autor || ''"
+                :type="cardDescription?.type || ''" :description="cardDescription?.descripcion || ''"
+                :negative-point="cardDescription?.puntuacion_negativa ?? 2"
+                :positive-point="cardDescription?.puntuacion_positiva ?? 4"
+                :direccion_pdf_contenido="cardDescription?.direccion_pdf_contenido ?? 'Desafío de la semana - 7 de Mayo.pdf'" />
 
             <section class="content">
                 <div class="content-navbar">
@@ -67,13 +54,11 @@ function handleCardClick(cardAttributes: CardDescription) {
                     <small class="content-card--small">Basado en la seleccion del curso</small>
                 </div>
 
-
                 <div class="content-card-objet">
-                    <ChallengerCard
-                        v-for="(item, index) in challengerCards.filter(card => card.course === activeButton)"
-                        :key="index" :course="item.course" :title="item.title" :type="item.type"
-                        @cardClicked="handleCardClick" />
-
+                    <ChallengerCard v-for="(item, index) in challengers?.filter(
+                        (card) => card.nombreCurso === activeButton
+                    ) || []" :key="index" :course="item.nombreCurso" :title="item.nombre" :type="item.type"
+                        @cardClicked="handleCardClick(item)" />
                 </div>
             </section>
         </article>

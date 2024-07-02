@@ -40,6 +40,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'comunidad',
     component: () => import('../pages/ComunityPage.vue'),
   },
+  {
+    path: '/sesion',
+    name: 'sesion',
+    component: () => import('../pages/LoginPage.vue'),
+  },
 ];
 
 const router = createRouter({

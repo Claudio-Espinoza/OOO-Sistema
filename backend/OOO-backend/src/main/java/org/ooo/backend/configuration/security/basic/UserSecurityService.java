@@ -58,7 +58,6 @@ public class UserSecurityService implements UserDetailsService {
     private Usuario buildUser(AuthCreateUserRequest userRequest) {
         return Usuario.builder()
                 .nombre(userRequest.username())
-                .email(userRequest.email())
                 .password(passwordEncoder.encode(userRequest.password()))
                 .tipoUsuario(TipoUsuario.valueOf(userRequest.roleRequest().toUpperCase()))
                 .build();
