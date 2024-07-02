@@ -41,8 +41,8 @@ public class DesafioController {
         }
     }
 
-    @PostMapping("agregar-desafio")
-    public ResponseEntity<String> agregarDesafio(@RequestParam("file") MultipartFile file, @RequestBody DesafioDto desafioDto) {
+    @PostMapping(value = "/agregar-desafio", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> agregarDesafio(@RequestPart("file") MultipartFile file, @RequestPart("desafioDto") DesafioDto desafioDto) {
         try {
             desafioService.agregarDesafio(desafioDto, file);
             return ResponseEntity.ok("Desafio agregado correctamente con PDF.");
