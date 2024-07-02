@@ -67,13 +67,13 @@ const handleDownload = async () => {
 
 .container-section {
     width: 100%;
-    height: 100%;
+    height: 60%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
+    padding: 5%;
     box-sizing: border-box;
 }
 
@@ -107,7 +107,7 @@ img {
 }
 
 .information-review {
-    width: 60%;
+    width: 80%;
     display: flex;
     align-items: start;
     flex-direction: column;
@@ -125,7 +125,7 @@ strong {
     border: 0.4vh solid var(--color-morado);
     color: var(--color-morado);
     border-radius: 0.8vw;
-    width: 60%;
+    width: 100%;
     height: 10%;
     font-weight: 500;
     cursor: pointer;

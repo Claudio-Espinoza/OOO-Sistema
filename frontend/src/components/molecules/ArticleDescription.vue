@@ -17,8 +17,9 @@ const props = defineProps<ArticleDescriptionProps>();
 }
 
 .container-section {
+  overflow: hidden;
   width: 80%;
-  height: 80%;
+  height: 40vh;
 
   display: flex;
   flex-direction: column;

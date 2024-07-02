@@ -3,10 +3,12 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import LoggerService from '@/service/LoggerService.ts'
 import { IAuthLoginRequest } from '@/model/User';
+import { useCounterStore } from '@/storage/UseStorage.ts';
 
 
 const router = useRouter();
 const service = new LoggerService()
+const store = useCounterStore();
 
 function changeView() {
     router.push("/")
@@ -28,7 +30,10 @@ const handleSubmit = () => {
         console.log(response);
         if (typeof response?.jwt === 'string' && response.jwt.length > 4) {
             error.value = false
-            router.push("/");
+
+            router.push('/').then(() => {
+                store.cambiarEstadoSesion(loginRequest.username);
+            });
         } else {
             error.value = true
         }

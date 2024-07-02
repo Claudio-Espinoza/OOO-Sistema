@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import { useCounterStore } from '@/storage/UseStorage.ts';
+import { computed } from 'vue'
+
+const store = useCounterStore();
+const nombre = computed(() => store.nombreGuardado);
+const sesion = computed(() => store.sesion);
+
 
 const router = useRouter();
 
@@ -12,8 +19,12 @@ function changeView() {
 <template>
     <header class="card-container">
         <div class="card-text">
-            <p class="card-text--user">Desconocido</p>
-            <small class="card-text--logger" @click="changeView()">Iniciar sesion</small>
+            <p class="card-text--user" v-if="sesion === false">Desconocido</p>
+            <p class="card-text--user" v-if="sesion === true">{{ nombre }}</p>
+            <small class="card-text--logger" @click="changeView()" v-if="sesion === false">Iniciar sesion</small>
+            <small class="card-text--logger" @click=" store.cambiarEstadoSesion('')"
+                v-if="sesion === true">Salir</small>
+
         </div>
         <img class="img" src="/src/assets/icon/user.png" alt="">
     </header>
