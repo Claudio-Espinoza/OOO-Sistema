@@ -46,6 +46,7 @@ export interface ChallengerCardProps {
   title?: string;
   course?: string;
   type?: string;
+  id?: string;
 }
 
 export interface ButonFilterProps {

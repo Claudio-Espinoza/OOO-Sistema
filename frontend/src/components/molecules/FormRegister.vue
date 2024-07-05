@@ -51,11 +51,10 @@ const handleSubmit = () => {
             <label class="form-title" for="password">Contraseña:</label>
             <input class="form-input" id="password" type="password" v-model="password" required>
         </div>
-        <small v-if="error">Logeo erroneo</small>
         <small v-if="succes">Registro exitoso</small>
 
         <div class="form-div--alternative">
-            <button class="form-button" type="submit">Login</button>
+            <button class="form-button" type="submit">Registro</button>
             <button class="form-button" @click="changeView()">Volver</button>
         </div>
 

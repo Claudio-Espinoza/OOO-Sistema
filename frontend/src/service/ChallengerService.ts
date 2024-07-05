@@ -20,6 +20,15 @@ class ChallengerService {
       return null;
     }
   }
+
+  async deleteChallenger(idDesafio: number): Promise<void> {
+    try {
+      await axios.delete(`${this.API_URL}/desafio/${idDesafio}`);
+      console.log('Desafío eliminado correctamente');
+    } catch (error) {
+      console.error('Error al eliminar el desafío:', error);
+    }
+  }
 }
 
-export default ChallengerService;
+export default new ChallengerService();
