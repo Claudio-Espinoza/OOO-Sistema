@@ -23,7 +23,7 @@ const handleSubmit = () => {
     const registerRequest: IRegister = {
         username: email.value,
         password: password.value,
-        roleRequest: 'ADMINISTRADOR'
+        roleRequest: 'ESTANDAR'
     };
 
     service.registerUser(registerRequest).then((response) => {
